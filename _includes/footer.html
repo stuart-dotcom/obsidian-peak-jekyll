@@ -1,0 +1,56 @@
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="{{ site.baseurl }}/" class="nav-logo" style="margin-bottom: var(--space-4);">
+          <svg width="32" height="32" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+            <polygon points="18,3 33,30 3,30" fill="none" stroke="var(--color-primary)" stroke-width="1.5" stroke-linejoin="round"/>
+            <polygon points="18,10 27,27 9,27" fill="var(--color-primary)" opacity="0.15"/>
+            <circle cx="18" cy="27" r="2" fill="var(--color-cta)"/>
+          </svg>
+          <span class="nav-logo-text">
+            Obsidian Peak
+            <span>Holdings LLC</span>
+          </span>
+        </a>
+        <p>Done-for-you digital marketing systems for local businesses. Powered by our proprietary Peak Platform. Based in Lake Placid, FL.</p>
+      </div>
+
+      <div>
+        <p class="footer-col-title">Company</p>
+        <ul class="footer-links">
+          <li><a href="{{ site.baseurl }}/about/">About Us</a></li>
+          <li><a href="{{ site.baseurl }}/services/">Services</a></li>
+          <li><a href="{{ site.baseurl }}/contact/">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="footer-col-title">Services</p>
+        <ul class="footer-links">
+          <li><a href="{{ site.baseurl }}/services/#crm">CRM &amp; Leads</a></li>
+          <li><a href="{{ site.baseurl }}/services/#automation">Automation</a></li>
+          <li><a href="{{ site.baseurl }}/services/#websites">Websites</a></li>
+          <li><a href="{{ site.baseurl }}/services/#reputation">Reputation</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="footer-col-title">Contact</p>
+        <ul class="footer-links">
+          <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+          <li><a href="{{ site.baseurl }}/contact/">Schedule a Call</a></li>
+          <li style="color: var(--color-text-faint); font-size: var(--text-xs);">{{ site.location }}</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">© {{ 'now' | date: "%Y" }} {{ site.legal_name }}. All rights reserved.</p>
+      <div class="footer-legal-links">
+        <a href="{{ site.baseurl }}/privacy-policy/">Privacy Policy</a>
+        <a href="{{ site.baseurl }}/terms-of-service/">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>

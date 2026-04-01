@@ -1,0 +1,43 @@
+<header class="site-header" role="banner">
+  <div class="nav-inner">
+    <a href="{{ site.baseurl }}/" class="nav-logo" aria-label="{{ site.title }} Home">
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+        <polygon points="18,3 33,30 3,30" fill="none" stroke="var(--color-primary)" stroke-width="1.5" stroke-linejoin="round"/>
+        <polygon points="18,10 27,27 9,27" fill="var(--color-primary)" opacity="0.15"/>
+        <line x1="18" y1="3" x2="18" y2="27" stroke="var(--color-primary)" stroke-width="1" opacity="0.4"/>
+        <circle cx="18" cy="27" r="2" fill="var(--color-cta)"/>
+      </svg>
+      <span class="nav-logo-text">
+        Obsidian Peak
+        <span>Holdings LLC</span>
+      </span>
+    </a>
+
+    <nav aria-label="Main navigation">
+      <ul class="nav-links">
+        <li><a href="{{ site.baseurl }}/"{% if page.url == '/' or page.url == '/index.html' %} class="active"{% endif %}>Home</a></li>
+        <li><a href="{{ site.baseurl }}/services/"{% if page.url contains '/services' %} class="active"{% endif %}>Services</a></li>
+        <li><a href="{{ site.baseurl }}/about/"{% if page.url contains '/about' %} class="active"{% endif %}>About</a></li>
+        <li><a href="{{ site.baseurl }}/contact/"{% if page.url contains '/contact' %} class="active"{% endif %}>Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="btn-theme-toggle" data-theme-toggle aria-label="Toggle theme"></button>
+      <a href="{{ site.baseurl }}/contact/" class="nav-cta">Get Started</a>
+      <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
+  </div>
+
+  <nav id="mobile-nav" class="nav-mobile-menu" aria-label="Mobile navigation">
+    <a href="{{ site.baseurl }}/"{% if page.url == '/' %} class="active"{% endif %}>Home</a>
+    <a href="{{ site.baseurl }}/services/"{% if page.url contains '/services' %} class="active"{% endif %}>Services</a>
+    <a href="{{ site.baseurl }}/about/"{% if page.url contains '/about' %} class="active"{% endif %}>About</a>
+    <a href="{{ site.baseurl }}/contact/"{% if page.url contains '/contact' %} class="active"{% endif %}>Contact</a>
+    <a href="{{ site.baseurl }}/contact/" class="nav-mobile-cta">Get Started Free</a>
+  </nav>
+</header>

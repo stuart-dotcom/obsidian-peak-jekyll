@@ -1,0 +1,41 @@
+# ============================================================
+# OBSIDIAN PEAK HOLDINGS — JEKYLL CONFIG
+# ============================================================
+
+title: "Obsidian Peak Holdings"
+tagline: "Digital Marketing Solutions for Local Businesses"
+description: "Obsidian Peak Holdings delivers done-for-you digital marketing systems to local businesses — CRM, automation, websites, reputation management, and more."
+url: "https://obsidianpeakholdings.com"
+baseurl: ""
+
+# Contact
+email: "stuart@obsidianpeakholdingsllc.com"
+location: "Lake Placid, Florida"
+legal_name: "Obsidian Peak Holdings LLC"
+
+# Platform branding (white-label — never mention GHL externally)
+platform_name: "Peak Platform"
+platform_tagline: "Our proprietary marketing platform built for local businesses."
+
+# Schema / SEO
+schema:
+  type: "LocalBusiness"
+  name: "Obsidian Peak Holdings LLC"
+  url: "https://obsidianpeakholdings.com"
+  email: "stuart@obsidianpeakholdingsllc.com"
+  address:
+    locality: "Lake Placid"
+    region: "FL"
+    country: "US"
+
+# Build
+permalink: pretty
+markdown: kramdown
+plugins:
+  - jekyll-seo-tag
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - README.md

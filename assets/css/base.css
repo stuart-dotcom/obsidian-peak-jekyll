@@ -1,0 +1,252 @@
+/* ============================================================
+   OBSIDIAN PEAK HOLDINGS — BASE CSS
+   Dark premium digital marketing agency
+   ============================================================ */
+
+/* === DESIGN TOKENS === */
+:root {
+  /* Type Scale */
+  --text-xs:   clamp(0.75rem,  0.7rem  + 0.25vw, 0.875rem);
+  --text-sm:   clamp(0.875rem, 0.8rem  + 0.35vw, 1rem);
+  --text-base: clamp(1rem,     0.95rem + 0.25vw, 1.125rem);
+  --text-lg:   clamp(1.125rem, 1rem    + 0.75vw, 1.5rem);
+  --text-xl:   clamp(1.5rem,   1.2rem  + 1.25vw, 2.25rem);
+  --text-2xl:  clamp(2rem,     1.2rem  + 2.5vw,  3.5rem);
+  --text-3xl:  clamp(2.5rem,   1rem    + 4vw,    5rem);
+  --text-hero: clamp(3rem,     0.5rem  + 7vw,    8rem);
+
+  /* Spacing */
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-5:  1.25rem;
+  --space-6:  1.5rem;
+  --space-8:  2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+
+  /* Border Radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-interactive: 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 400ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Content Widths */
+  --content-narrow: 640px;
+  --content-default: 960px;
+  --content-wide: 1200px;
+
+  /* Fonts */
+  --font-display: 'Clash Display', 'Helvetica Neue', sans-serif;
+  --font-body: 'Satoshi', 'Inter', sans-serif;
+}
+
+/* === OBSIDIAN BRAND PALETTE — Dark First === */
+:root, [data-theme="dark"] {
+  /* Surfaces — deep volcanic obsidian */
+  --color-bg:              #080a0c;
+  --color-surface:         #0e1114;
+  --color-surface-2:       #13171c;
+  --color-surface-offset:  #181d23;
+  --color-surface-offset-2:#1e242c;
+  --color-surface-dynamic: #252d38;
+  --color-divider:         #232b35;
+  --color-border:          #2c3544;
+
+  /* Text */
+  --color-text:            #e8ecf0;
+  --color-text-muted:      #7a8799;
+  --color-text-faint:      #3d4d5e;
+  --color-text-inverse:    #080a0c;
+
+  /* Primary Accent — electric teal */
+  --color-primary:         #00c2b8;
+  --color-primary-hover:   #00ddd2;
+  --color-primary-active:  #00f0e4;
+  --color-primary-highlight: #0a2928;
+
+  /* CTA Gold */
+  --color-cta:             #f5b700;
+  --color-cta-hover:       #ffc82e;
+  --color-cta-active:      #ffda6a;
+  --color-cta-highlight:   #2e2600;
+
+  /* Success */
+  --color-success:         #3ecf8e;
+  --color-success-hover:   #28bb79;
+  --color-success-highlight: #0d2a1e;
+
+  /* Error */
+  --color-error:           #f87171;
+  --color-error-hover:     #ef4444;
+  --color-error-highlight: #2d1010;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.4);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.5);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.6);
+  --shadow-glow: 0 0 40px rgba(0,194,184,0.12);
+  --shadow-glow-strong: 0 0 60px rgba(0,194,184,0.2);
+}
+
+/* Light mode override */
+[data-theme="light"] {
+  --color-bg:              #f4f6f8;
+  --color-surface:         #ffffff;
+  --color-surface-2:       #f9fafb;
+  --color-surface-offset:  #eef1f5;
+  --color-surface-offset-2:#e6eaef;
+  --color-surface-dynamic: #dde2e9;
+  --color-divider:         #d4dae3;
+  --color-border:          #c8d0db;
+
+  --color-text:            #0d1117;
+  --color-text-muted:      #4a5568;
+  --color-text-faint:      #9ba8b8;
+  --color-text-inverse:    #f4f6f8;
+
+  --color-primary:         #007a74;
+  --color-primary-hover:   #005e59;
+  --color-primary-active:  #004341;
+  --color-primary-highlight: #d0f0ee;
+
+  --color-cta:             #c47900;
+  --color-cta-hover:       #a36400;
+  --color-cta-active:      #7c4c00;
+  --color-cta-highlight:   #fff3cc;
+
+  --color-success:         #16a34a;
+  --color-success-hover:   #15803d;
+  --color-success-highlight: #dcfce7;
+
+  --color-error:           #dc2626;
+  --color-error-hover:     #b91c1c;
+  --color-error-highlight: #fee2e2;
+
+  --shadow-sm: 0 1px 3px rgba(13,17,23,0.08);
+  --shadow-md: 0 4px 16px rgba(13,17,23,0.10);
+  --shadow-lg: 0 12px 40px rgba(13,17,23,0.14);
+  --shadow-glow: 0 0 40px rgba(0,122,116,0.10);
+  --shadow-glow-strong: 0 0 60px rgba(0,122,116,0.16);
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    --color-bg:              #f4f6f8;
+    --color-surface:         #ffffff;
+    --color-surface-2:       #f9fafb;
+    --color-surface-offset:  #eef1f5;
+    --color-surface-offset-2:#e6eaef;
+    --color-surface-dynamic: #dde2e9;
+    --color-divider:         #d4dae3;
+    --color-border:          #c8d0db;
+    --color-text:            #0d1117;
+    --color-text-muted:      #4a5568;
+    --color-text-faint:      #9ba8b8;
+    --color-text-inverse:    #f4f6f8;
+    --color-primary:         #007a74;
+    --color-primary-hover:   #005e59;
+    --color-primary-active:  #004341;
+    --color-primary-highlight: #d0f0ee;
+    --color-cta:             #c47900;
+    --color-cta-hover:       #a36400;
+    --color-cta-highlight:   #fff3cc;
+    --shadow-sm: 0 1px 3px rgba(13,17,23,0.08);
+    --shadow-md: 0 4px 16px rgba(13,17,23,0.10);
+    --shadow-lg: 0 12px 40px rgba(13,17,23,0.14);
+    --shadow-glow: 0 0 40px rgba(0,122,116,0.10);
+  }
+}
+
+/* === BASE RESET === */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+  hanging-punctuation: first last;
+  scroll-padding-top: var(--space-20);
+}
+
+body {
+  min-height: 100dvh;
+  line-height: 1.65;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  transition: background-color var(--transition-slow), color var(--transition-slow);
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+ul[role="list"], ol[role="list"] { list-style: none; }
+input, button, textarea, select { font: inherit; color: inherit; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  text-wrap: balance;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+p, li, figcaption {
+  text-wrap: pretty;
+  max-width: 70ch;
+}
+
+::selection {
+  background: rgba(0,194,184,0.2);
+  color: var(--color-text);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+button { cursor: pointer; background: none; border: none; }
+table { border-collapse: collapse; width: 100%; }
+
+a, button, [role="button"], input, textarea, select {
+  transition: color var(--transition-interactive),
+              background var(--transition-interactive),
+              border-color var(--transition-interactive),
+              box-shadow var(--transition-interactive),
+              opacity var(--transition-interactive);
+}
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border-width: 0;
+}
