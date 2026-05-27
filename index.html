@@ -4,31 +4,32 @@ title: "Custom Websites & Technical SEO | Obsidian Peak Holdings"
 description: "Florida-based, veteran-owned web studio. Custom-coded websites, technical SEO, domain migration, and done-for-you web mastering. No bloated builders. No outsourcing. Ever."
 ---
 
-<!-- ========== HERO ========== -->
-<section class="hero" aria-labelledby="hero-heading">
+<!-- ========== HERO BANNER IMAGE ========== -->
+<!--
+  The hero banner is a STANDALONE full-width image strip sitting
+  directly below the nav bar and above all other page content.
+  It is NOT a section with text overlay — it IS the image itself.
+  The first content section (.section) begins below it.
+-->
+<div class="hero-banner" role="img" aria-label="Obsidian Peak Holdings logo">
+  <picture>
+    <source srcset="{{ site.baseurl }}/assets/images/Obsidian_Peak_Logo_.webp" type="image/webp" />
+    <img
+      src="{{ site.baseurl }}/assets/images/Obsidian_Peak_Logo_Tinified.jpg"
+      alt="Obsidian Peak Holdings"
+      width="1200"
+      height="600"
+      loading="eager"
+      decoding="async"
+      class="hero-banner-img"
+    />
+  </picture>
+</div>
 
-  <!-- TRUE HERO BANNER: logo fills the full section background -->
-  <div class="hero-bg" aria-hidden="true">
-    <picture class="hero-banner-picture">
-      <source srcset="{{ site.baseurl }}/assets/images/Obsidian_Peak_Logo_.webp" type="image/webp" />
-      <img
-        src="{{ site.baseurl }}/assets/images/Obsidian_Peak_Logo_Tinified.jpg"
-        alt=""
-        class="hero-banner-img"
-        width="900"
-        height="900"
-        loading="eager"
-        decoding="async"
-      />
-    </picture>
-    <div class="hero-overlay"></div>
-    <div class="hero-grid-lines"></div>
-    <div class="hero-radial"></div>
-    <div class="hero-radial-2"></div>
-  </div>
-
-  <div class="hero-content">
-    <div class="hero-inner">
+<!-- ========== HERO TEXT + CTA ========== -->
+<section class="hero-copy" aria-labelledby="hero-heading">
+  <div class="container">
+    <div class="hero-copy-inner">
 
       <div class="hero-eyebrow">
         <span class="badge">
