@@ -348,30 +348,31 @@
 
 .hero-banner {
   width: 100%;
-  height: clamp(260px, 35vw, 480px);
-  background: var(--color-surface); /* fills any letterbox gaps */
+  background: var(--color-surface);
   border-bottom: 1px solid var(--color-divider);
   overflow: hidden;
+  /* NO height set — let the image define it naturally */
+  padding: 0;   /* remove any padding that shrinks the image */
+  margin: 0;
 }
 
 .hero-banner picture {
   display: block;
   width: 100%;
-  height: 100%;
 }
 
 .hero-banner-img {
   display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;          /* whole image always visible, never cropped */
-  object-position: center center; /* logo stays centered */
+  width: 100%;   /* stretch edge to edge */
+  height: auto;  /* maintain 2:1 ratio naturally */
+  max-height: none;
+  object-fit: unset; /* remove all object-fit interference */
 }
 
-/* Mobile */
 @media (max-width: 600px) {
-  .hero-banner {
-    height: clamp(180px, 48vw, 260px);
+  .hero-banner-img {
+    width: 100%;
+    height: auto;
   }
 }
 /* ===================================================================
