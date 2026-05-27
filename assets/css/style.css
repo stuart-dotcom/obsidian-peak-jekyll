@@ -346,48 +346,35 @@
   50% { opacity: 0.6; transform: scale(0.8); }
 }
 
-/* ===================================================================
-   HERO BANNER — full-width image strip
-   Image dimensions: 1774 × 887px (2:1 landscape aspect ratio)
-
-   Strategy: width:100% on the <img> fills the container edge-to-edge.
-   Height is determined by the natural aspect ratio (2:1), constrained
-   by a max-height so it doesn't get too tall on ultra-wide screens.
-   object-fit:cover prevents any gaps if container proportions diverge.
-   =================================================================== */
-
 .hero-banner {
   width: 100%;
   background: var(--color-surface);
   border-bottom: 1px solid var(--color-divider);
   overflow: hidden;
-  /* No fixed height — let the image's natural ratio drive the height */
-  max-height: clamp(260px, 35vw, 480px);
+  /* Fixed height — this is the constraint that clips the image */
+  height: clamp(260px, 35vw, 480px);
 }
 
 .hero-banner picture {
   display: block;
   width: 100%;
-  line-height: 0; /* Removes inline-block gap below image */
+  height: 100%;   /* ← Must match the banner height to pass the constraint down */
 }
 
 .hero-banner-img {
   display: block;
-  width: 100%;          /* Fill the full container width */
-  height: auto;         /* Maintain 2:1 aspect ratio naturally */
-  max-height: clamp(260px, 35vw, 480px);
-  object-fit: cover;    /* Crop gracefully if max-height clips the image */
-  object-position: center center;
+  width: 100%;
+  height: 100%;         /* Fill the fixed container height */
+  object-fit: cover;    /* Scale + crop to fill both dimensions — no distortion */
+  object-position: center top; /* Show the top of the image (your peaks) */
 }
 
 /* Mobile */
 @media (max-width: 600px) {
-  .hero-banner,
-  .hero-banner-img {
-    max-height: clamp(180px, 48vw, 260px);
+  .hero-banner {
+    height: clamp(180px, 48vw, 260px);
   }
 }
-
 /* ===================================================================
    HERO COPY — text + CTA block below the banner
    =================================================================== */
