@@ -348,81 +348,43 @@
 
 /* ===================================================================
    HERO BANNER — full-width image strip
+   Image dimensions: 1774 × 887px (2:1 landscape aspect ratio)
 
-   The logo is a SQUARE asset (900×900px intrinsic dimensions).
-   The banner is a WIDE, SHORT landscape container.
-
-   The correct approach for a square image in a landscape container:
-   ─────────────────────────────────────────────────────────────────
-   • The <picture>/<img> must NOT have width:100% AND height:100%
-     simultaneously — that forces the browser to try to fill both
-     axes of a mismatched aspect ratio, causing distortion or overflow.
-
-   • Instead: let the banner be height-constrained, and let the
-     image be height:100%, width:auto — so it scales proportionally
-     from the height, never exceeding the container height, and
-     remains centred horizontally with the remaining space breathing
-     on either side. object-fit:contain is a safety net but
-     width:auto is what actually prevents the squash.
-
-   • max-width:100% ensures the image never exceeds the container
-     width on very small viewports where the image height would
-     be wider than the screen.
-
-   Layout result:
-     [ ··· | LOGO | ··· ]   ← image centred, correct proportions
+   Strategy: width:100% on the <img> fills the container edge-to-edge.
+   Height is determined by the natural aspect ratio (2:1), constrained
+   by a max-height so it doesn't get too tall on ultra-wide screens.
+   object-fit:cover prevents any gaps if container proportions diverge.
    =================================================================== */
 
 .hero-banner {
   width: 100%;
   background: var(--color-surface);
   border-bottom: 1px solid var(--color-divider);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /* Height drives the container — image scales from this */
-  height: clamp(260px, 35vw, 480px);
-  padding: var(--space-8) var(--space-6);
   overflow: hidden;
+  /* No fixed height — let the image's natural ratio drive the height */
+  max-height: clamp(260px, 35vw, 480px);
 }
 
 .hero-banner picture {
-  /* Picture element must also be height-driven, not width-stretched */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: auto;      /* ← KEY: do NOT set width:100% on the picture wrapper */
+  display: block;
+  width: 100%;
+  line-height: 0; /* Removes inline-block gap below image */
 }
 
-/*
-  The fix lives here:
-  ─────────────────────────────────────────────────────────────────
-  BEFORE (broken): width:100%; height:100%
-    → Browser fills the full banner width (1200px+) AND the full
-      height (480px). A 900×900 square image gets horizontally
-      stretched to 1200px wide, destroying its proportions.
-
-  AFTER (correct): height:100%; width:auto
-    → Image is sized from its height (480px max). Width is
-      calculated automatically: 480px × (900/900) = 480px wide.
-      No distortion. Logo stays square and centred.
-  ─────────────────────────────────────────────────────────────────
-*/
 .hero-banner-img {
   display: block;
-  height: 100%;         /* Scale from height — matches container */
-  width: auto;          /* Auto-calculate width to preserve aspect ratio */
-  max-width: 100%;      /* Prevent overflow on narrow viewports */
-  object-fit: contain;  /* Safety net: never crop or distort */
+  width: 100%;          /* Fill the full container width */
+  height: auto;         /* Maintain 2:1 aspect ratio naturally */
+  max-height: clamp(260px, 35vw, 480px);
+  object-fit: cover;    /* Crop gracefully if max-height clips the image */
   object-position: center center;
 }
 
-/* Mobile: shorter banner, same proportion behaviour */
+/* Mobile */
 @media (max-width: 600px) {
-  .hero-banner {
-    height: clamp(180px, 48vw, 260px);
-    padding: var(--space-5) var(--space-4);
+  .hero-banner,
+  .hero-banner-img {
+    max-height: clamp(180px, 48vw, 260px);
   }
 }
 
