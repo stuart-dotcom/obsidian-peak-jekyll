@@ -6,10 +6,9 @@ description: "Florida-based, veteran-owned web studio. Custom-coded websites, te
 
 <!-- ========== HERO BANNER IMAGE ========== -->
 <!--
-  The hero banner is a STANDALONE full-width image strip sitting
-  directly below the nav bar and above all other page content.
-  It is NOT a section with text overlay — it IS the image itself.
-  The first content section (.section) begins below it.
+  The hero banner is a full-width image strip sitting directly below
+  the nav. The logo is displayed in full — contained, centred, padded.
+  object-fit: contain ensures the entire logo is always visible.
 -->
 <div class="hero-banner" role="img" aria-label="Obsidian Peak Holdings logo">
   <picture>
@@ -17,8 +16,8 @@ description: "Florida-based, veteran-owned web studio. Custom-coded websites, te
     <img
       src="{{ site.baseurl }}/assets/images/Obsidian_Peak_Logo_Tinified.jpg"
       alt="Obsidian Peak Holdings"
-      width="1200"
-      height="600"
+      width="900"
+      height="900"
       loading="eager"
       decoding="async"
       class="hero-banner-img"

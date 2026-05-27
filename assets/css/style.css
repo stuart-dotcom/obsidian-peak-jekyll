@@ -221,7 +221,6 @@
   transition: background var(--transition-interactive), transform var(--transition-interactive), box-shadow var(--transition-interactive), color var(--transition-interactive), border-color var(--transition-interactive);
 }
 
-/* btn-hero-cta: cobalt on hero — prominent CTA */
 .btn-hero-cta {
   background: var(--color-cta);
   color: #ffffff;
@@ -235,7 +234,6 @@
   box-shadow: 0 8px 24px oklch(from var(--color-cta) l c h / 0.3);
 }
 
-/* btn-primary: cobalt — for form submits and non-hero contexts */
 .btn-primary {
   background: var(--color-cta);
   color: #ffffff;
@@ -350,7 +348,14 @@
 
 /* ===================================================================
    HERO BANNER — full-width image strip spanning edge to edge
-   The logo image IS the hero. Stretched full-width, object-fit: cover.
+
+   The logo is a square (or near-square) image. The banner is a
+   widescreen container. To make it fit correctly:
+   - object-fit: contain — shows the FULL logo, no cropping
+   - width: 100% — banner spans the full viewport width
+   - height is constrained by clamp() on the container
+   - Generous padding so the logo breathes inside the banner
+   - Background matches the site surface — seamless on dark theme
    =================================================================== */
 
 .hero-banner {
@@ -360,38 +365,40 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
-  /* Fluid height: banner fills a bold but not overwhelming band */
-  height: clamp(280px, 40vw, 520px);
+  /* Fixed height container — logo scales proportionally inside it */
+  height: clamp(260px, 35vw, 480px);
+  padding: var(--space-8) var(--space-6);
 }
 
 .hero-banner picture {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   height: 100%;
 }
 
 /*
-  The logo image:
-  - width: 100% — spans full container width
-  - height: 100% — fills the full banner height
-  - object-fit: cover — stretches edge-to-edge, crops as needed
-  - object-position: center — keeps the logo centred in the crop
-  - opacity: 1 — fully visible, this IS the hero statement
+  Key rules:
+  - width: 100% — fills the full banner width
+  - height: 100% — fills the banner height
+  - object-fit: contain — scales logo to fit WITHOUT cropping
+    (correct for a square logo inside a wide banner)
+  - object-position: center — keeps logo centred
 */
 .hero-banner-img {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center center;
-  opacity: 1;
 }
 
-/* Mobile: tighter height, same full-width stretch */
+/* Mobile: shorter banner, same contain behaviour */
 @media (max-width: 600px) {
   .hero-banner {
-    height: clamp(180px, 52vw, 280px);
+    height: clamp(180px, 48vw, 260px);
+    padding: var(--space-5) var(--space-4);
   }
 }
 
@@ -771,7 +778,6 @@
   flex-shrink: 0;
 }
 
-/* White CTA button on dark band */
 .cta-band .btn-hero-cta {
   background: #ffffff;
   color: #0d0e10;
@@ -840,10 +846,6 @@
   margin-bottom: var(--space-5);
 }
 
-/*
-  Footer logo: larger and more pronounced.
-  Rounded edges. Subtle glow on dark background.
-*/
 .footer-logo-img {
   width: auto;
   height: auto;
