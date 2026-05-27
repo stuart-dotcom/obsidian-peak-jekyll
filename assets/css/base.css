@@ -1,6 +1,9 @@
 /* ============================================================
    OBSIDIAN PEAK HOLDINGS — BASE CSS
-   Dark premium digital marketing agency
+   Art direction: precision web studio → authoritative + technical
+   Palette: white surfaces, vanta black type, electric cobalt accent
+   Typography: Clash Display (headings) + Satoshi (body)
+   Density: balanced — generous whitespace, tight UI chrome
    ============================================================ */
 
 /* === DESIGN TOKENS === */
@@ -51,124 +54,175 @@
   --font-body: 'Satoshi', 'Inter', sans-serif;
 }
 
-/* === OBSIDIAN BRAND PALETTE — Dark First === */
-:root, [data-theme="dark"] {
-  /* Surfaces — deep volcanic obsidian */
-  --color-bg:              #080a0c;
-  --color-surface:         #0e1114;
-  --color-surface-2:       #13171c;
-  --color-surface-offset:  #181d23;
-  --color-surface-offset-2:#1e242c;
-  --color-surface-dynamic: #252d38;
-  --color-divider:         #232b35;
-  --color-border:          #2c3544;
+/* ============================================================
+   LIGHT MODE — DEFAULT (white-first, cobalt accent)
+   ============================================================ */
+:root, [data-theme="light"] {
+  /* Surfaces — pure white + off-white layers */
+  --color-bg:               #ffffff;
+  --color-surface:          #f8f9fb;
+  --color-surface-2:        #f2f4f7;
+  --color-surface-offset:   #eaedf2;
+  --color-surface-offset-2: #e2e6ed;
+  --color-surface-dynamic:  #d8dde6;
+  --color-divider:          #dde1e8;
+  --color-border:           #d0d5de;
 
-  /* Text */
-  --color-text:            #e8ecf0;
-  --color-text-muted:      #7a8799;
-  --color-text-faint:      #3d4d5e;
-  --color-text-inverse:    #080a0c;
+  /* Text — vanta black hierarchy */
+  --color-text:             #080a0c;
+  --color-text-muted:       #4a5568;
+  --color-text-faint:       #9ba8b8;
+  --color-text-inverse:     #ffffff;
 
-  /* Primary Accent — electric teal */
-  --color-primary:         #00c2b8;
-  --color-primary-hover:   #00ddd2;
-  --color-primary-active:  #00f0e4;
-  --color-primary-highlight: #0a2928;
+  /* Primary Accent — electric cobalt blue */
+  --color-primary:          #1a56db;
+  --color-primary-hover:    #1447c0;
+  --color-primary-active:   #0e38a0;
+  --color-primary-highlight:#dbeafe;
 
-  /* CTA Gold */
-  --color-cta:             #f5b700;
-  --color-cta-hover:       #ffc82e;
-  --color-cta-active:      #ffda6a;
-  --color-cta-highlight:   #2e2600;
+  /* Secondary/CTA — deep cobalt for filled buttons */
+  --color-cta:              #1a56db;
+  --color-cta-hover:        #1447c0;
+  --color-cta-active:       #0e38a0;
+  --color-cta-highlight:    #dbeafe;
 
   /* Success */
-  --color-success:         #3ecf8e;
-  --color-success-hover:   #28bb79;
-  --color-success-highlight: #0d2a1e;
+  --color-success:          #16a34a;
+  --color-success-hover:    #15803d;
+  --color-success-highlight:#dcfce7;
 
   /* Error */
-  --color-error:           #f87171;
-  --color-error-hover:     #ef4444;
-  --color-error-highlight: #2d1010;
+  --color-error:            #dc2626;
+  --color-error-hover:      #b91c1c;
+  --color-error-highlight:  #fee2e2;
 
-  /* Shadows */
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.4);
-  --shadow-md: 0 4px 16px rgba(0,0,0,0.5);
-  --shadow-lg: 0 12px 40px rgba(0,0,0,0.6);
-  --shadow-glow: 0 0 40px rgba(0,194,184,0.12);
-  --shadow-glow-strong: 0 0 60px rgba(0,194,184,0.2);
-}
-
-/* Light mode override */
-[data-theme="light"] {
-  --color-bg:              #f4f6f8;
-  --color-surface:         #ffffff;
-  --color-surface-2:       #f9fafb;
-  --color-surface-offset:  #eef1f5;
-  --color-surface-offset-2:#e6eaef;
-  --color-surface-dynamic: #dde2e9;
-  --color-divider:         #d4dae3;
-  --color-border:          #c8d0db;
-
-  --color-text:            #0d1117;
-  --color-text-muted:      #4a5568;
-  --color-text-faint:      #9ba8b8;
-  --color-text-inverse:    #f4f6f8;
-
-  --color-primary:         #007a74;
-  --color-primary-hover:   #005e59;
-  --color-primary-active:  #004341;
-  --color-primary-highlight: #d0f0ee;
-
-  --color-cta:             #c47900;
-  --color-cta-hover:       #a36400;
-  --color-cta-active:      #7c4c00;
-  --color-cta-highlight:   #fff3cc;
-
-  --color-success:         #16a34a;
-  --color-success-hover:   #15803d;
-  --color-success-highlight: #dcfce7;
-
-  --color-error:           #dc2626;
-  --color-error-hover:     #b91c1c;
-  --color-error-highlight: #fee2e2;
-
-  --shadow-sm: 0 1px 3px rgba(13,17,23,0.08);
-  --shadow-md: 0 4px 16px rgba(13,17,23,0.10);
-  --shadow-lg: 0 12px 40px rgba(13,17,23,0.14);
-  --shadow-glow: 0 0 40px rgba(0,122,116,0.10);
-  --shadow-glow-strong: 0 0 60px rgba(0,122,116,0.16);
+  /* Shadows — cool-toned to match white surfaces */
+  --shadow-sm:  0 1px 3px rgba(8,10,12,0.07);
+  --shadow-md:  0 4px 16px rgba(8,10,12,0.09);
+  --shadow-lg:  0 12px 40px rgba(8,10,12,0.12);
+  --shadow-glow: 0 0 40px rgba(26,86,219,0.10);
+  --shadow-glow-strong: 0 0 60px rgba(26,86,219,0.18);
 }
 
 @media (prefers-color-scheme: light) {
   :root:not([data-theme]) {
-    --color-bg:              #f4f6f8;
-    --color-surface:         #ffffff;
-    --color-surface-2:       #f9fafb;
-    --color-surface-offset:  #eef1f5;
-    --color-surface-offset-2:#e6eaef;
-    --color-surface-dynamic: #dde2e9;
-    --color-divider:         #d4dae3;
-    --color-border:          #c8d0db;
-    --color-text:            #0d1117;
-    --color-text-muted:      #4a5568;
-    --color-text-faint:      #9ba8b8;
-    --color-text-inverse:    #f4f6f8;
-    --color-primary:         #007a74;
-    --color-primary-hover:   #005e59;
-    --color-primary-active:  #004341;
-    --color-primary-highlight: #d0f0ee;
-    --color-cta:             #c47900;
-    --color-cta-hover:       #a36400;
-    --color-cta-highlight:   #fff3cc;
-    --shadow-sm: 0 1px 3px rgba(13,17,23,0.08);
-    --shadow-md: 0 4px 16px rgba(13,17,23,0.10);
-    --shadow-lg: 0 12px 40px rgba(13,17,23,0.14);
-    --shadow-glow: 0 0 40px rgba(0,122,116,0.10);
+    --color-bg:               #ffffff;
+    --color-surface:          #f8f9fb;
+    --color-surface-2:        #f2f4f7;
+    --color-surface-offset:   #eaedf2;
+    --color-surface-offset-2: #e2e6ed;
+    --color-surface-dynamic:  #d8dde6;
+    --color-divider:          #dde1e8;
+    --color-border:           #d0d5de;
+    --color-text:             #080a0c;
+    --color-text-muted:       #4a5568;
+    --color-text-faint:       #9ba8b8;
+    --color-text-inverse:     #ffffff;
+    --color-primary:          #1a56db;
+    --color-primary-hover:    #1447c0;
+    --color-primary-active:   #0e38a0;
+    --color-primary-highlight:#dbeafe;
+    --color-cta:              #1a56db;
+    --color-cta-hover:        #1447c0;
+    --color-cta-active:       #0e38a0;
+    --color-cta-highlight:    #dbeafe;
+    --color-success:          #16a34a;
+    --color-success-hover:    #15803d;
+    --color-success-highlight:#dcfce7;
+    --color-error:            #dc2626;
+    --color-error-hover:      #b91c1c;
+    --color-error-highlight:  #fee2e2;
+    --shadow-sm:  0 1px 3px rgba(8,10,12,0.07);
+    --shadow-md:  0 4px 16px rgba(8,10,12,0.09);
+    --shadow-lg:  0 12px 40px rgba(8,10,12,0.12);
+    --shadow-glow: 0 0 40px rgba(26,86,219,0.10);
+    --shadow-glow-strong: 0 0 60px rgba(26,86,219,0.18);
   }
 }
 
-/* === BASE RESET === */
+/* ============================================================
+   DARK MODE — vanta black surfaces, cobalt accent
+   ============================================================ */
+[data-theme="dark"] {
+  --color-bg:               #080a0c;
+  --color-surface:          #0e1114;
+  --color-surface-2:        #13171c;
+  --color-surface-offset:   #181d23;
+  --color-surface-offset-2: #1e242c;
+  --color-surface-dynamic:  #252d38;
+  --color-divider:          #232b35;
+  --color-border:           #2c3544;
+
+  --color-text:             #e8ecf0;
+  --color-text-muted:       #7a8799;
+  --color-text-faint:       #3d4d5e;
+  --color-text-inverse:     #080a0c;
+
+  /* Electric cobalt — lightened for dark bg contrast */
+  --color-primary:          #4f8ef7;
+  --color-primary-hover:    #6ba3f9;
+  --color-primary-active:   #85b6fb;
+  --color-primary-highlight:#1a2a4a;
+
+  --color-cta:              #4f8ef7;
+  --color-cta-hover:        #6ba3f9;
+  --color-cta-active:       #85b6fb;
+  --color-cta-highlight:    #1a2a4a;
+
+  --color-success:          #3ecf8e;
+  --color-success-hover:    #28bb79;
+  --color-success-highlight:#0d2a1e;
+
+  --color-error:            #f87171;
+  --color-error-hover:      #ef4444;
+  --color-error-highlight:  #2d1010;
+
+  --shadow-sm:  0 1px 3px rgba(0,0,0,0.4);
+  --shadow-md:  0 4px 16px rgba(0,0,0,0.5);
+  --shadow-lg:  0 12px 40px rgba(0,0,0,0.6);
+  --shadow-glow: 0 0 40px rgba(79,142,247,0.12);
+  --shadow-glow-strong: 0 0 60px rgba(79,142,247,0.22);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --color-bg:               #080a0c;
+    --color-surface:          #0e1114;
+    --color-surface-2:        #13171c;
+    --color-surface-offset:   #181d23;
+    --color-surface-offset-2: #1e242c;
+    --color-surface-dynamic:  #252d38;
+    --color-divider:          #232b35;
+    --color-border:           #2c3544;
+    --color-text:             #e8ecf0;
+    --color-text-muted:       #7a8799;
+    --color-text-faint:       #3d4d5e;
+    --color-text-inverse:     #080a0c;
+    --color-primary:          #4f8ef7;
+    --color-primary-hover:    #6ba3f9;
+    --color-primary-active:   #85b6fb;
+    --color-primary-highlight:#1a2a4a;
+    --color-cta:              #4f8ef7;
+    --color-cta-hover:        #6ba3f9;
+    --color-cta-active:       #85b6fb;
+    --color-cta-highlight:    #1a2a4a;
+    --color-success:          #3ecf8e;
+    --color-success-hover:    #28bb79;
+    --color-success-highlight:#0d2a1e;
+    --color-error:            #f87171;
+    --color-error-hover:      #ef4444;
+    --color-error-highlight:  #2d1010;
+    --shadow-sm:  0 1px 3px rgba(0,0,0,0.4);
+    --shadow-md:  0 4px 16px rgba(0,0,0,0.5);
+    --shadow-lg:  0 12px 40px rgba(0,0,0,0.6);
+    --shadow-glow: 0 0 40px rgba(79,142,247,0.12);
+    --shadow-glow-strong: 0 0 60px rgba(79,142,247,0.22);
+  }
+}
+
+/* ============================================================
+   BASE RESET
+   ============================================================ */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -216,7 +270,7 @@ p, li, figcaption {
 }
 
 ::selection {
-  background: rgba(0,194,184,0.2);
+  background: rgba(26,86,219,0.15);
   color: var(--color-text);
 }
 
