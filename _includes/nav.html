@@ -2,22 +2,9 @@
   <div class="nav-inner">
 
     <a href="{{ site.baseurl }}/" class="nav-logo" aria-label="{{ site.title }} Home">
-      <!-- Obsidian Peak Holdings SVG Logo -->
-      <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-        <!-- Outer obsidian peak triangle -->
-        <polygon points="20,4 37,34 3,34" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linejoin="round"/>
-        <!-- Inner filled peak -->
-        <polygon points="20,11 30,30 10,30" fill="var(--color-primary)" opacity="0.12"/>
-        <!-- Center spine -->
-        <line x1="20" y1="4" x2="20" y2="30" stroke="var(--color-primary)" stroke-width="1.2" opacity="0.5"/>
-        <!-- Summit dot — electric accent -->
-        <circle cx="20" cy="4" r="2.5" fill="var(--color-primary)"/>
-        <!-- Base accent dot -->
-        <circle cx="20" cy="30" r="2" fill="var(--color-cta)"/>
-      </svg>
       <span class="nav-logo-text">
-        Obsidian Peak
-        <span>Holdings LLC</span>
+        Obsidian Peak Holdings
+        <span>LLC</span>
       </span>
     </a>
 
@@ -46,6 +33,6 @@
     <a href="{{ site.baseurl }}/services/"{% if page.url contains '/services' %} class="active"{% endif %}>Services</a>
     <a href="{{ site.baseurl }}/about/"{% if page.url contains '/about' %} class="active"{% endif %}>About</a>
     <a href="{{ site.baseurl }}/contact/"{% if page.url contains '/contact' %} class="active"{% endif %}>Contact</a>
-    <a href="{{ site.baseurl }}/contact/" class="nav-mobile-cta">Get Started Free</a>
+    <a href="{{ site.baseurl }}/contact/" class="nav-mobile-cta">Get Started</a>
   </nav>
 </header>
