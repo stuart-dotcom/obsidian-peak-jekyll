@@ -2,27 +2,38 @@
    OBSIDIAN PEAK HOLDINGS — MAIN JS
    ============================================================ */
 
-// === THEME TOGGLE — defaults to LIGHT ===
+// === THEME TOGGLE — defaults to DARK (site-wide default per brief) ===
 (function () {
   const html = document.documentElement;
   const toggle = document.querySelector('[data-theme-toggle]');
-  // Always start light; user can switch to dark
-  let theme = 'light';
 
-  const sunSVG = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>`;
-  const moonSVG = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`;
+  // Default to DARK; only switch to light if user's system is explicitly light
+  const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+  let theme = prefersLight ? 'light' : 'dark';
+
+  const sunSVG = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>`;
+  const moonSVG = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`;
 
   function applyTheme(t) {
     theme = t;
     html.setAttribute('data-theme', t);
+    const isDark = t === 'dark';
+    const icon = isDark ? sunSVG : moonSVG;
+    const label = 'Switch to ' + (isDark ? 'light' : 'dark') + ' mode';
+
     if (toggle) {
-      toggle.innerHTML = t === 'dark' ? sunSVG : moonSVG;
-      toggle.setAttribute('aria-label', 'Switch to ' + (t === 'dark' ? 'light' : 'dark') + ' mode');
+      toggle.innerHTML = icon;
+      toggle.setAttribute('aria-label', label);
     }
+
     const mobileToggle = document.querySelector('[data-theme-toggle-mobile]');
-    if (mobileToggle) mobileToggle.innerHTML = t === 'dark' ? sunSVG : moonSVG;
+    if (mobileToggle) {
+      mobileToggle.innerHTML = icon;
+      mobileToggle.setAttribute('aria-label', label);
+    }
   }
 
+  // Apply immediately to prevent flash
   applyTheme(theme);
 
   if (toggle) {
@@ -47,14 +58,26 @@
 
   hamburger.addEventListener('click', () => {
     const isOpen = mobileMenu.classList.toggle('open');
-    hamburger.setAttribute('aria-expanded', isOpen);
+    hamburger.setAttribute('aria-expanded', String(isOpen));
     hamburger.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
   });
 
+  // Close on outside click
   document.addEventListener('click', (e) => {
     if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
       mobileMenu.classList.remove('open');
       hamburger.setAttribute('aria-expanded', 'false');
+      hamburger.setAttribute('aria-label', 'Open menu');
+    }
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
+      mobileMenu.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      hamburger.setAttribute('aria-label', 'Open menu');
+      hamburger.focus();
     }
   });
 })();
@@ -63,6 +86,7 @@
 (function () {
   const els = document.querySelectorAll('.fade-up');
   if (!els.length) return;
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -71,6 +95,7 @@
       }
     });
   }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
   els.forEach(el => observer.observe(el));
 })();
 
@@ -80,8 +105,15 @@
     btn.addEventListener('click', () => {
       const item = btn.closest('.faq-item');
       const isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
-      if (!isOpen) item.classList.add('open');
+      // Close all open items
+      document.querySelectorAll('.faq-item.open').forEach(el => {
+        el.classList.remove('open');
+        el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
     });
   });
 })();
@@ -90,14 +122,17 @@
 (function () {
   const form = document.querySelector('#contact-form');
   if (!form) return;
+
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const btn = form.querySelector('button[type="submit"]');
     const original = btn.innerHTML;
-    btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Message Sent!';
+
+    btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg> Message Sent!';
     btn.style.background = 'var(--color-success)';
     btn.style.color = '#fff';
     btn.disabled = true;
+
     setTimeout(() => {
       btn.innerHTML = original;
       btn.style.background = '';
@@ -112,24 +147,28 @@
 (function () {
   const counters = document.querySelectorAll('[data-count]');
   if (!counters.length) return;
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const el = entry.target;
-        const end = parseInt(el.dataset.count);
+        const end = parseInt(el.dataset.count, 10);
         const suffix = el.dataset.suffix || '';
         const duration = 1800;
         const startTime = performance.now();
+
         function update(now) {
-          const p = Math.min((now - startTime) / duration, 1);
-          const eased = 1 - Math.pow(1 - p, 3);
+          const progress = Math.min((now - startTime) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
           el.textContent = Math.round(end * eased) + suffix;
-          if (p < 1) requestAnimationFrame(update);
+          if (progress < 1) requestAnimationFrame(update);
         }
+
         requestAnimationFrame(update);
         observer.unobserve(el);
       }
     });
   }, { threshold: 0.5 });
+
   counters.forEach(el => observer.observe(el));
 })();

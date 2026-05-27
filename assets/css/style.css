@@ -1,8 +1,8 @@
 /* ============================================================
    OBSIDIAN PEAK HOLDINGS — MAIN STYLESHEET
-   Art direction: Digital marketing agency, Lake Placid FL
-   Tone: Light-first, credible, modern, results-focused
-   Palette: White surfaces, near-black text, electric blue accent, gold CTA
+   Art direction: Precision web studio → authoritative + technical
+   Tone: DARK-FIRST — obsidian surfaces, steel-white type, cobalt accent
+   Palette: Vanta black surfaces, near-white text, electric cobalt accent
    Typography: Clash Display (headings) + Satoshi (body)
    Density: Balanced — spacious sections, tight components
    ============================================================ */
@@ -33,12 +33,21 @@
   gap: var(--space-6);
 }
 
-/* Text-only wordmark — no icon, no gap */
+/* Logo: image mark + wordmark */
 .nav-logo {
   display: flex;
   align-items: center;
+  gap: var(--space-3);
   text-decoration: none;
   color: var(--color-text);
+  flex-shrink: 0;
+}
+
+.nav-logo-img {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  object-fit: contain;
   flex-shrink: 0;
 }
 
@@ -108,23 +117,28 @@
   border-color: var(--color-primary);
 }
 
-/* Nav CTA: gold pill — stays gold sitewide */
+/*
+  Nav CTA: white text on cobalt background.
+  DARK MODE: --color-cta = #4f8ef7 (mid-blue). Near-black text fails WCAG.
+  LIGHT MODE: --color-cta = #1a56db (deep cobalt). White text passes 4.5:1.
+  Solution: white text universally — passes contrast in both modes.
+*/
 .nav-cta {
   padding: var(--space-2) var(--space-5);
   background: var(--color-cta);
-  color: #0d0e10;
+  color: #ffffff;
   border-radius: var(--radius-md);
   font-size: var(--text-sm);
   font-weight: 700;
   text-decoration: none;
   letter-spacing: 0.02em;
   white-space: nowrap;
-  transition: background var(--transition-interactive), transform var(--transition-interactive), box-shadow var(--transition-interactive);
+  transition: background var(--transition-interactive), transform var(--transition-interactive), box-shadow var(--transition-interactive), color var(--transition-interactive);
 }
 
 .nav-cta:hover {
   background: var(--color-cta-hover);
-  color: #0d0e10;
+  color: #ffffff;
   transform: translateY(-1px);
   box-shadow: 0 6px 18px oklch(from var(--color-cta) l c h / 0.28);
 }
@@ -173,22 +187,31 @@
   border-bottom: 1px solid var(--color-divider);
 }
 
-.nav-mobile-menu a:hover, .nav-mobile-menu a.active {
+.nav-mobile-menu a:hover,
+.nav-mobile-menu a.active {
   color: var(--color-primary);
 }
 
+/* Mobile CTA — no !important; proper specificity via dedicated class */
 .nav-mobile-cta {
   padding: var(--space-3) var(--space-6);
-  background: var(--color-cta) !important;
-  color: #0d0e10 !important;
+  background: var(--color-cta);
+  color: #ffffff;
   border-radius: var(--radius-md);
   text-align: center;
   font-weight: 700;
-  border: none !important;
+  border: none;
+  margin-top: var(--space-2);
+}
+
+.nav-mobile-cta:hover {
+  background: var(--color-cta-hover);
+  color: #ffffff;
 }
 
 @media (max-width: 768px) {
-  .nav-links, .nav-actions .nav-cta { display: none; }
+  .nav-links,
+  .nav-actions .nav-cta { display: none; }
   .nav-hamburger { display: flex; }
 }
 
@@ -223,15 +246,15 @@
   box-shadow: 0 8px 24px oklch(0 0 0 / 0.15);
 }
 
-/* btn-primary: gold — kept for form submits and non-hero contexts */
+/* btn-primary: cobalt — for form submits and non-hero contexts */
 .btn-primary {
   background: var(--color-cta);
-  color: #0d0e10;
+  color: #ffffff;
 }
 
 .btn-primary:hover {
   background: var(--color-cta-hover);
-  color: #0d0e10;
+  color: #ffffff;
   transform: translateY(-1px);
   box-shadow: 0 8px 24px oklch(from var(--color-cta) l c h / 0.25);
 }
@@ -286,6 +309,32 @@
   padding-block: clamp(var(--space-12), 5vw, var(--space-20));
 }
 
+/* Replaces inline style="background: var(--color-surface)" on section elements */
+.section-alt {
+  background: var(--color-surface);
+}
+
+/* Replaces inline style="text-align:center; margin-top: var(--space-12)" divs */
+.section-cta-center {
+  text-align: center;
+  margin-top: var(--space-12);
+}
+
+/* Replaces inline style="justify-content:center" on section labels */
+.section-label-centered {
+  justify-content: center;
+}
+
+/* Replaces inline style="margin: 0 auto" on section subtext */
+.section-subtext-centered {
+  margin-inline: auto;
+}
+
+/* Why Us grid spacing — replaces inline style="margin-top: var(--space-10)" */
+.why-us-grid {
+  margin-top: var(--space-10);
+}
+
 /* === BADGE / LABEL === */
 .badge {
   display: inline-flex;
@@ -331,6 +380,30 @@
   pointer-events: none;
 }
 
+/*
+  Hero banner image: logo as large atmospheric background element.
+  Ghosted to 7% opacity — present but not competing with the headline.
+  Positioned right-of-centre to frame the text on the left.
+*/
+.hero-banner-image {
+  position: absolute;
+  right: -5%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 55%;
+  max-width: 700px;
+  opacity: 0.07;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero-banner-image picture,
+.hero-bg-logo {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .hero-grid-lines {
   position: absolute;
   inset: 0;
@@ -365,14 +438,15 @@
   padding-block: var(--space-24);
 }
 
+/*
+  Single-column hero — text only.
+  Logo is the atmospheric background, not a grid column.
+  Max-width keeps the headline from stretching too wide.
+*/
 .hero-inner {
-  max-width: var(--content-wide);
+  max-width: 760px;
   margin: 0 auto;
   padding-inline: var(--space-6);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-16);
-  align-items: center;
 }
 
 .hero-eyebrow {
@@ -435,6 +509,7 @@
   font-size: var(--text-base);
   font-weight: 700;
   letter-spacing: -0.01em;
+  color: var(--color-primary);
 }
 
 .hero-stat-label {
@@ -445,51 +520,22 @@
   margin-top: var(--space-1);
 }
 
-/* Hero logo panel — right column */
-.hero-visual {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.hero-logo-panel {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  max-width: 480px;
-  margin-left: auto;
-}
-
-.hero-logo-img {
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-  position: relative;
-  z-index: 1;
-  /* Subtle drop shadow to lift logo off the background */
-  filter: drop-shadow(0 8px 32px oklch(from var(--color-primary) l c h / 0.18));
-}
-
-.hero-glow-ring {
-  position: absolute;
-  inset: -24px;
-  border-radius: 50%;
-  border: 1px solid oklch(from var(--color-primary) l c h / 0.1);
-  pointer-events: none;
-  z-index: 0;
-}
-
 @media (max-width: 900px) {
-  .hero-inner { grid-template-columns: 1fr; }
-  .hero-visual { display: none; }
   .hero {
     min-height: auto;
-    padding-block: 0;
   }
-  .hero-content { padding-block: var(--space-16) var(--space-12); }
+  .hero-content {
+    padding-block: var(--space-16) var(--space-12);
+  }
+  .hero-inner {
+    max-width: 100%;
+  }
+  .hero-banner-image {
+    right: 50%;
+    transform: translate(50%, -50%);
+    width: 80%;
+    opacity: 0.05;
+  }
 }
 
 /* === SECTION LABELS === */
@@ -637,10 +683,11 @@
   position: relative;
 }
 
+/* Left-aligned process cards — centred text is an AI-template anti-pattern */
 .process-step {
   position: relative;
   counter-increment: step-counter;
-  text-align: center;
+  text-align: left;
   padding: var(--space-8) var(--space-6);
   background: var(--color-surface);
   border: 1px solid oklch(from var(--color-border) l c h / 0.8);
@@ -667,7 +714,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto var(--space-5);
+  margin: 0 0 var(--space-5);
   color: var(--color-primary);
 }
 
@@ -1252,11 +1299,30 @@
   max-width: 34ch;
 }
 
-.footer-brand .nav-logo img {
-  height: 48px;
+/* Footer logo link — dedicated class to avoid conflict with .nav-logo sizing */
+.footer-logo-link {
+  display: inline-block;
+  margin-bottom: var(--space-5);
+}
+
+/*
+  Footer logo: larger and more pronounced per brief.
+  Rounded edges via border-radius: var(--radius-xl).
+  Subtle cobalt glow lifts it off the dark surface.
+*/
+.footer-logo-img {
   width: auto;
-  max-width: 160px;
+  height: auto;
+  max-width: 200px;
+  max-height: 200px;
+  border-radius: var(--radius-xl);
   object-fit: contain;
+  filter: drop-shadow(0 4px 20px oklch(from var(--color-primary) l c h / 0.15));
+  transition: filter var(--transition-interactive);
+}
+
+.footer-logo-link:hover .footer-logo-img {
+  filter: drop-shadow(0 6px 28px oklch(from var(--color-primary) l c h / 0.28));
 }
 
 .footer-col-title {

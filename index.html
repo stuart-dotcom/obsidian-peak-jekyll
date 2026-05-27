@@ -6,7 +6,23 @@ description: "Florida-based, veteran-owned web studio. Custom-coded websites, te
 
 <!-- ========== HERO ========== -->
 <section class="hero" aria-labelledby="hero-heading">
+
+  <!-- Full-bleed hero banner: logo as atmospheric background image -->
   <div class="hero-bg">
+    <div class="hero-banner-image" aria-hidden="true">
+      <picture>
+        <source srcset="{{ site.baseurl }}/assets/images/Obsidian_Peak_Logo_.webp" type="image/webp" />
+        <img
+          src="{{ site.baseurl }}/assets/images/Obsidian_Peak_Logo_Tinified.jpg"
+          alt=""
+          width="900"
+          height="900"
+          loading="eager"
+          decoding="async"
+          class="hero-bg-logo"
+        />
+      </picture>
+    </div>
     <div class="hero-grid-lines"></div>
     <div class="hero-radial"></div>
     <div class="hero-radial-2"></div>
@@ -34,46 +50,29 @@ description: "Florida-based, veteran-owned web studio. Custom-coded websites, te
         </p>
 
         <div class="hero-actions">
-          <a href="/contact/" class="btn btn-hero-cta btn-lg">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <a href="{{ site.baseurl }}/contact/" class="btn btn-hero-cta btn-lg">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             Schedule a Free Consultation
           </a>
-          <a href="/services/" class="btn btn-secondary btn-lg">View Services</a>
+          <a href="{{ site.baseurl }}/services/" class="btn btn-secondary btn-lg">View Services</a>
         </div>
 
         <div class="hero-stats">
           <div>
-            <div class="hero-stat-number is-text" style="color: var(--color-primary);">No Builders</div>
+            <div class="hero-stat-number is-text">No Builders</div>
             <div class="hero-stat-label">Ever. Period.</div>
           </div>
           <div>
-            <div class="hero-stat-number is-text" style="color: var(--color-primary);">U.S.-Only</div>
+            <div class="hero-stat-number is-text">U.S.-Only</div>
             <div class="hero-stat-label">Zero Outsourcing</div>
           </div>
           <div>
-            <div class="hero-stat-number is-text" style="color: var(--color-primary);">Done For You</div>
+            <div class="hero-stat-number is-text">Done For You</div>
             <div class="hero-stat-label">Web Hosting &amp; Mastering</div>
           </div>
         </div>
 
       </div>
-
-      <!-- Right column: hero logo -->
-      <div class="hero-visual" aria-hidden="true">
-        <div class="hero-logo-panel">
-          <div class="hero-glow-ring"></div>
-          <img
-            src="/assets/images/Obsidian_Peak_Logo_.webp"
-            alt="Obsidian Peak Holdings"
-            width="480"
-            height="480"
-            loading="eager"
-            decoding="async"
-            class="hero-logo-img"
-          />
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
@@ -116,7 +115,7 @@ description: "Florida-based, veteran-owned web studio. Custom-coded websites, te
 
       <div class="service-card fade-up fade-up-delay-1" id="websites">
         <div class="service-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
         </div>
         <h3 class="service-title">Website Design &amp; Hosting</h3>
         <p class="service-desc">From blank canvas to live site &mdash; precision-engineered, fast-loading, and built to convert. No builders, no templates, no compromise.</p>
@@ -130,7 +129,7 @@ description: "Florida-based, veteran-owned web studio. Custom-coded websites, te
 
       <div class="service-card fade-up fade-up-delay-2" id="migration">
         <div class="service-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
         </div>
         <h3 class="service-title">Domain Migration &amp; Legacy Rebuilds</h3>
         <p class="service-desc">Stuck on an old platform or broken builder site? We migrate your domain and rebuild from the ground up &mdash; preserving your SEO equity and rankings.</p>
@@ -144,7 +143,7 @@ description: "Florida-based, veteran-owned web studio. Custom-coded websites, te
 
       <div class="service-card fade-up fade-up-delay-3" id="seo">
         <div class="service-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
         </div>
         <h3 class="service-title">Technical SEO</h3>
         <p class="service-desc">Real SEO work done by real experts &mdash; not a plugin, not a checklist tool, not outsourced. We audit, fix, and build SEO directly into the code.</p>
@@ -158,7 +157,7 @@ description: "Florida-based, veteran-owned web studio. Custom-coded websites, te
 
       <div class="service-card fade-up fade-up-delay-4" id="updates">
         <div class="service-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
         </div>
         <h3 class="service-title">Website Updates &amp; Web Mastering</h3>
         <p class="service-desc">Your website is a living asset. We keep it updated, monitored, and performing &mdash; ongoing web mastering available as a standalone service or bundled with any build.</p>
@@ -172,46 +171,46 @@ description: "Florida-based, veteran-owned web studio. Custom-coded websites, te
 
     </div>
 
-    <div style="text-align:center; margin-top: var(--space-12);">
-      <a href="/services/" class="btn btn-secondary btn-lg">See Full Services &amp; Pricing &rarr;</a>
+    <div class="section-cta-center">
+      <a href="{{ site.baseurl }}/services/" class="btn btn-secondary btn-lg">See Full Services &amp; Pricing &rarr;</a>
     </div>
   </div>
 </section>
 
 <!-- ========== HOW IT WORKS ========== -->
-<section class="section" style="background: var(--color-surface);" aria-labelledby="process-heading">
+<section class="section section-alt" aria-labelledby="process-heading">
   <div class="container">
     <div class="text-center fade-up">
-      <p class="section-label" style="justify-content:center;">Our Process</p>
+      <p class="section-label section-label-centered">Our Process</p>
       <h2 class="section-heading" id="process-heading">From First Call to Live Site &mdash; Fast.</h2>
-      <p class="section-subtext" style="margin: 0 auto;">No handoffs to junior devs, no offshore teams, no surprises. You work directly with the people building your site.</p>
+      <p class="section-subtext section-subtext-centered">No handoffs to junior devs, no offshore teams, no surprises. You work directly with the people building your site.</p>
     </div>
 
     <div class="process-steps">
       <div class="process-step fade-up fade-up-delay-1">
         <div class="step-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
         </div>
         <h3 class="step-title">Free Consultation</h3>
         <p class="step-desc">We talk through your goals, your current site situation, and what you actually need &mdash; no upsell pressure, no BS.</p>
       </div>
       <div class="process-step fade-up fade-up-delay-2">
         <div class="step-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
         </div>
         <h3 class="step-title">Custom Scoping</h3>
         <p class="step-desc">We map out your site architecture, SEO strategy, and build plan. Every project is scoped from scratch &mdash; never from a template.</p>
       </div>
       <div class="process-step fade-up fade-up-delay-3">
         <div class="step-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
         </div>
         <h3 class="step-title">Build &amp; Launch</h3>
         <p class="step-desc">We engineer your site, configure hosting, set up SEO foundations, and go live &mdash; typically within days, not weeks.</p>
       </div>
       <div class="process-step fade-up fade-up-delay-4">
         <div class="step-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
         </div>
         <h3 class="step-title">Ongoing Web Mastering</h3>
         <p class="step-desc">Updates, monitoring, and SEO improvements handled in-house. Available as a standalone retainer or bundled with your build.</p>
@@ -229,11 +228,11 @@ description: "Florida-based, veteran-owned web studio. Custom-coded websites, te
       <p class="section-subtext">We operate differently than every other web agency you've talked to. Here's what that actually means.</p>
     </div>
 
-    <div class="services-grid services-grid-3col" style="margin-top: var(--space-10);">
+    <div class="services-grid services-grid-3col why-us-grid">
 
       <div class="service-card fade-up fade-up-delay-1">
         <div class="service-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
         </div>
         <h3 class="service-title">Built for Performance</h3>
         <p class="service-desc">No bloated website builders. No drag-and-drop baggage. Every site is engineered from the ground up for speed, search, and conversions &mdash; with real technical precision baked in from line one.</p>
@@ -241,7 +240,7 @@ description: "Florida-based, veteran-owned web studio. Custom-coded websites, te
 
       <div class="service-card fade-up fade-up-delay-2">
         <div class="service-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         </div>
         <h3 class="service-title">100% U.S. In-House Team</h3>
         <p class="service-desc">Every task &mdash; design, development, SEO, hosting &mdash; is handled by our in-house team in the United States. Nothing is outsourced offshore. Ever.</p>
@@ -249,7 +248,7 @@ description: "Florida-based, veteran-owned web studio. Custom-coded websites, te
 
       <div class="service-card fade-up fade-up-delay-3">
         <div class="service-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
         </div>
         <h3 class="service-title">Veteran Owned &amp; Florida Based</h3>
         <p class="service-desc">Founded and operated by a U.S. veteran. We bring the same discipline and accountability to every client project that we brought to service.</p>
@@ -261,7 +260,7 @@ description: "Florida-based, veteran-owned web studio. Custom-coded websites, te
 
 <!-- ========== CTA BAND ========== -->
 <section class="cta-band section-sm">
-  <div class="cta-band-bg"></div>
+  <div class="cta-band-bg" aria-hidden="true"></div>
   <div class="container">
     <div class="cta-band-inner">
       <div class="cta-band-text fade-up">
@@ -269,8 +268,8 @@ description: "Florida-based, veteran-owned web studio. Custom-coded websites, te
         <p>Book a free consultation. We'll review your current site, identify what's costing you rankings and conversions, and show you exactly what we'd build instead.</p>
       </div>
       <div class="cta-band-actions fade-up fade-up-delay-2">
-        <a href="/contact/" class="btn btn-hero-cta btn-lg">Book Free Consultation</a>
-        <a href="/services/" class="btn btn-secondary btn-lg">View Pricing</a>
+        <a href="{{ site.baseurl }}/contact/" class="btn btn-hero-cta btn-lg">Book Free Consultation</a>
+        <a href="{{ site.baseurl }}/services/" class="btn btn-secondary btn-lg">View Pricing</a>
       </div>
     </div>
   </div>

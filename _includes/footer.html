@@ -3,17 +3,21 @@
     <div class="footer-top">
 
       <div class="footer-brand">
-        <a href="{{ site.baseurl }}/" class="nav-logo" style="margin-bottom: var(--space-4);" aria-label="Obsidian Peak Holdings Home">
-          <img
-            src="/assets/images/Obsidian_Peak_Logo_Footer.png"
-            alt="Obsidian Peak Holdings"
-            width="140"
-            height="48"
-            loading="lazy"
-            decoding="async"
-          />
+        <a href="{{ site.baseurl }}/" class="footer-logo-link" aria-label="Obsidian Peak Holdings — Return to homepage">
+          <picture>
+            <source srcset="{{ site.baseurl }}/assets/images/Obsidian_Peak_Logo_.webp" type="image/webp" />
+            <img
+              src="{{ site.baseurl }}/assets/images/Obsidian_Peak_Logo_Tinified.jpg"
+              alt="Obsidian Peak Holdings"
+              width="200"
+              height="200"
+              loading="lazy"
+              decoding="async"
+              class="footer-logo-img"
+            />
+          </picture>
         </a>
-        <p>Custom-built websites, real technical SEO, and done-for-you web mastering — built and managed by U.S.-based experts. Veteran Owned.</p>
+        <p>Custom-built websites, real technical SEO, and done-for-you web mastering &mdash; built and managed by U.S.-based experts. Veteran Owned.</p>
       </div>
 
       <div>
@@ -46,7 +50,7 @@
     </div>
 
     <div class="footer-bottom">
-      <p class="footer-copy">© {{ 'now' | date: "%Y" }} {{ site.legal_name }}. All rights reserved.</p>
+      <p class="footer-copy">&copy; {{ 'now' | date: "%Y" }} {{ site.legal_name }}. All rights reserved.</p>
       <div class="footer-legal-links">
         <a href="{{ site.baseurl }}/privacy-policy/">Privacy Policy</a>
         <a href="{{ site.baseurl }}/terms-of-service/">Terms of Service</a>
