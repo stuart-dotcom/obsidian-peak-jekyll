@@ -1,8 +1,8 @@
 /* ============================================================
    OBSIDIAN PEAK HOLDINGS — MAIN STYLESHEET
    Art direction: Precision web studio → authoritative + technical
-   Tone: LIGHT-FIRST — clean white surfaces, obsidian type, cobalt accent
-   Palette: White/off-white surfaces, near-black text, cobalt accent
+   Tone: DARK-FIRST — obsidian surfaces, steel-white type, cobalt accent
+   Palette: Vanta black surfaces, near-white text, electric blue accent
    Typography: Clash Display (headings) + Satoshi (body)
    Density: Balanced — spacious sections, tight components
    ============================================================ */
@@ -33,11 +33,6 @@
   gap: var(--space-6);
 }
 
-/*
-  Nav: wordmark only — no image mark.
-  The logo image lives exclusively in the hero banner.
-  Wordmark uses the display font at a comfortable nav size.
-*/
 .nav-logo {
   display: flex;
   align-items: center;
@@ -354,19 +349,10 @@
 }
 
 /* ===================================================================
-   HERO BANNER — full-width image strip, directly below nav, above fold
-   This is NOT a section with an overlay. The logo is the hero.
-   It sits as a bold, clearly-visible image band spanning the full width.
-   No grid lines. No subduing. The image IS the hero statement.
+   HERO BANNER — full-width image strip spanning edge to edge
+   The logo image IS the hero. Stretched full-width, object-fit: cover.
    =================================================================== */
 
-/*
-  .hero-banner: the image container.
-  - Full viewport width
-  - Fixed height on desktop (clamp for fluid sizing), auto on mobile
-  - White/light bg so the logo pops in light mode
-  - No overlay, no opacity reduction — the image is meant to be SEEN
-*/
 .hero-banner {
   width: 100%;
   background: var(--color-surface);
@@ -375,8 +361,8 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  /* Constrain height so it reads as a banner, not a full-page takeover */
-  max-height: clamp(280px, 40vw, 520px);
+  /* Fluid height: banner fills a bold but not overwhelming band */
+  height: clamp(280px, 40vw, 520px);
 }
 
 .hero-banner picture {
@@ -386,35 +372,31 @@
 }
 
 /*
-  The logo image itself:
-  - object-fit: contain — always show the complete logo, never cropped
-  - Full opacity — this is the hero, it must be clearly visible
-  - Width 100%, height constrained by parent max-height
+  The logo image:
+  - width: 100% — spans full container width
+  - height: 100% — fills the full banner height
+  - object-fit: cover — stretches edge-to-edge, crops as needed
+  - object-position: center — keeps the logo centred in the crop
+  - opacity: 1 — fully visible, this IS the hero statement
 */
 .hero-banner-img {
   display: block;
   width: 100%;
-  height: clamp(280px, 40vw, 520px);
-  object-fit: contain;
+  height: 100%;
+  object-fit: cover;
   object-position: center center;
-  opacity: 1;                 /* Bold. Fully visible. Not subdued. */
-  padding: var(--space-8) var(--space-6);
+  opacity: 1;
 }
 
-/* Mobile: tighter padding, proportionally scaled */
+/* Mobile: tighter height, same full-width stretch */
 @media (max-width: 600px) {
   .hero-banner {
-    max-height: clamp(200px, 55vw, 300px);
-  }
-  .hero-banner-img {
-    height: clamp(200px, 55vw, 300px);
-    padding: var(--space-5) var(--space-4);
+    height: clamp(180px, 52vw, 280px);
   }
 }
 
 /* ===================================================================
-   HERO COPY — text + CTA block that sits directly below the banner
-   Clean, left-aligned, no background treatments.
+   HERO COPY — text + CTA block below the banner
    =================================================================== */
 .hero-copy {
   padding-block: clamp(var(--space-12), 5vw, var(--space-20));
@@ -859,7 +841,7 @@
 }
 
 /*
-  Footer logo: larger and more pronounced as briefed.
+  Footer logo: larger and more pronounced.
   Rounded edges. Subtle glow on dark background.
 */
 .footer-logo-img {
