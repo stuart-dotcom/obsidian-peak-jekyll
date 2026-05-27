@@ -33,27 +33,22 @@
   gap: var(--space-6);
 }
 
-/* Logo: image mark + wordmark */
+/*
+  Nav: wordmark only — no image mark.
+  The logo image lives exclusively in the hero banner.
+  Wordmark uses the display font at a comfortable nav size.
+*/
 .nav-logo {
   display: flex;
   align-items: center;
-  gap: var(--space-3);
   text-decoration: none;
   color: var(--color-text);
   flex-shrink: 0;
 }
 
-.nav-logo-img {
-  width: 40px;
-  height: 40px;
-  border-radius: var(--radius-md);
-  object-fit: contain;
-  flex-shrink: 0;
-}
-
 .nav-logo-text {
   font-family: var(--font-display);
-  font-size: var(--text-base);
+  font-size: var(--text-lg);
   font-weight: 700;
   letter-spacing: 0.02em;
   text-transform: uppercase;
@@ -61,14 +56,15 @@
   color: var(--color-text);
 }
 
-.nav-logo-text span {
+.nav-logo-sub {
   display: inline;
-  font-size: var(--text-base);
+  font-size: var(--text-lg);
   font-family: var(--font-display);
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  color: var(--color-text);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted);
   text-transform: uppercase;
+  margin-left: 0.35em;
 }
 
 .nav-links {
@@ -118,10 +114,8 @@
 }
 
 /*
-  Nav CTA: white text on cobalt background.
-  DARK MODE: --color-cta = #4f8ef7 (mid-blue). Near-black text fails WCAG.
-  LIGHT MODE: --color-cta = #1a56db (deep cobalt). White text passes 4.5:1.
-  Solution: white text universally — passes contrast in both modes.
+  Nav CTA: white text on cobalt.
+  White passes WCAG 4.5:1 on both light cobalt (#1a56db) and dark cobalt (#4f8ef7).
 */
 .nav-cta {
   padding: var(--space-2) var(--space-5);
@@ -192,7 +186,7 @@
   color: var(--color-primary);
 }
 
-/* Mobile CTA — no !important; proper specificity via dedicated class */
+/* Mobile CTA */
 .nav-mobile-cta {
   padding: var(--space-3) var(--space-6);
   background: var(--color-cta);
@@ -309,28 +303,23 @@
   padding-block: clamp(var(--space-12), 5vw, var(--space-20));
 }
 
-/* Replaces inline style="background: var(--color-surface)" on section elements */
 .section-alt {
   background: var(--color-surface);
 }
 
-/* Replaces inline style="text-align:center; margin-top: var(--space-12)" divs */
 .section-cta-center {
   text-align: center;
   margin-top: var(--space-12);
 }
 
-/* Replaces inline style="justify-content:center" on section labels */
 .section-label-centered {
   justify-content: center;
 }
 
-/* Replaces inline style="margin: 0 auto" on section subtext */
 .section-subtext-centered {
   margin-inline: auto;
 }
 
-/* Why Us grid spacing — replaces inline style="margin-top: var(--space-10)" */
 .why-us-grid {
   margin-top: var(--space-10);
 }
@@ -364,7 +353,13 @@
   50% { opacity: 0.6; transform: scale(0.8); }
 }
 
-/* === HERO SECTION === */
+/* ===================================================================
+   HERO SECTION
+   The logo is a TRUE HERO BANNER IMAGE:
+   - Fills the entire section as an object-fit: cover background
+   - A dark overlay sits on top so text remains readable
+   - Text content is centered over the image
+   =================================================================== */
 .hero {
   position: relative;
   min-height: 92vh;
@@ -373,40 +368,49 @@
   overflow: hidden;
 }
 
+/* hero-bg: the full-bleed image layer behind everything */
 .hero-bg {
   position: absolute;
   inset: 0;
   z-index: 0;
-  pointer-events: none;
 }
 
 /*
-  Hero banner image: logo as large atmospheric background element.
-  Ghosted to 7% opacity — present but not competing with the headline.
-  Positioned right-of-centre to frame the text on the left.
+  The <picture> and <img> fill the entire hero section.
+  object-fit: contain keeps the full logo visible and centered.
+  object-fit: cover would crop it — contain preserves the mark.
 */
-.hero-banner-image {
-  position: absolute;
-  right: -5%;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 55%;
-  max-width: 700px;
-  opacity: 0.07;
-  z-index: 0;
-  pointer-events: none;
-}
-
-.hero-banner-image picture,
-.hero-bg-logo {
+.hero-banner-picture {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
+}
+
+.hero-banner-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;        /* Full logo always visible, never cropped */
+  object-position: center center;
+  opacity: 0.18;              /* Visible as backdrop; text stays foreground */
+}
+
+/*
+  Dark gradient overlay: ensures text legibility over the logo.
+  Stronger at left (text side) → fades toward the logo.
+*/
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 40% 50%, var(--color-bg) 0%, oklch(from var(--color-bg) l c h / 0.85) 40%, oklch(from var(--color-bg) l c h / 0.5) 70%, transparent 100%);
+  z-index: 1;
 }
 
 .hero-grid-lines {
   position: absolute;
   inset: 0;
+  z-index: 2;
   background-image:
     linear-gradient(oklch(from var(--color-primary) l c h / 0.04) 1px, transparent 1px),
     linear-gradient(90deg, oklch(from var(--color-primary) l c h / 0.04) 1px, transparent 1px);
@@ -419,6 +423,7 @@
   right: -10%;
   width: 70%;
   height: 120%;
+  z-index: 2;
   background: radial-gradient(ellipse at center, oklch(from var(--color-primary) l c h / 0.06) 0%, transparent 65%);
 }
 
@@ -428,23 +433,20 @@
   left: -10%;
   width: 50%;
   height: 80%;
+  z-index: 2;
   background: radial-gradient(ellipse at center, oklch(from var(--color-cta) l c h / 0.04) 0%, transparent 65%);
 }
 
+/* Text content sits on z-index 3, above image + overlay */
 .hero-content {
   position: relative;
-  z-index: 1;
+  z-index: 3;
   width: 100%;
   padding-block: var(--space-24);
 }
 
-/*
-  Single-column hero — text only.
-  Logo is the atmospheric background, not a grid column.
-  Max-width keeps the headline from stretching too wide.
-*/
 .hero-inner {
-  max-width: 760px;
+  max-width: var(--content-wide);
   margin: 0 auto;
   padding-inline: var(--space-6);
 }
@@ -522,19 +524,22 @@
 
 @media (max-width: 900px) {
   .hero {
-    min-height: auto;
+    min-height: 80vh;
   }
   .hero-content {
     padding-block: var(--space-16) var(--space-12);
   }
-  .hero-inner {
-    max-width: 100%;
+  .hero-banner-img {
+    opacity: 0.12;
   }
-  .hero-banner-image {
-    right: 50%;
-    transform: translate(50%, -50%);
-    width: 80%;
-    opacity: 0.05;
+}
+
+@media (max-width: 480px) {
+  .hero {
+    min-height: 70vh;
+  }
+  .hero-banner-img {
+    opacity: 0.08;
   }
 }
 
@@ -583,7 +588,6 @@
   margin-top: var(--space-12);
 }
 
-/* 2x2 enforced grid — 4 cards always in two even rows */
 .services-grid-2x2 {
   grid-template-columns: repeat(2, 1fr);
 }
@@ -594,7 +598,6 @@
   }
 }
 
-/* 3-column grid for Why Us section */
 .services-grid-3col {
   grid-template-columns: repeat(3, 1fr);
 }
@@ -683,7 +686,6 @@
   position: relative;
 }
 
-/* Left-aligned process cards — centred text is an AI-template anti-pattern */
 .process-step {
   position: relative;
   counter-increment: step-counter;
@@ -1299,16 +1301,14 @@
   max-width: 34ch;
 }
 
-/* Footer logo link — dedicated class to avoid conflict with .nav-logo sizing */
 .footer-logo-link {
   display: inline-block;
   margin-bottom: var(--space-5);
 }
 
 /*
-  Footer logo: larger and more pronounced per brief.
-  Rounded edges via border-radius: var(--radius-xl).
-  Subtle cobalt glow lifts it off the dark surface.
+  Footer logo: larger, more pronounced, rounded edges.
+  Cobalt glow lifts it off the dark surface.
 */
 .footer-logo-img {
   width: auto;

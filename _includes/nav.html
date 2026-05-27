@@ -1,20 +1,9 @@
 <header class="site-header" role="banner">
   <div class="nav-inner">
 
+    <!-- Wordmark only — no image mark in nav. Logo lives in hero. -->
     <a href="{{ site.baseurl }}/" class="nav-logo" aria-label="{{ site.title }} — Return to homepage">
-      <picture>
-        <source srcset="{{ site.baseurl }}/assets/images/Obsidian_Peak_Logo_.webp" type="image/webp" />
-        <img
-          src="{{ site.baseurl }}/assets/images/Obsidian_Peak_Logo_Tinified.jpg"
-          alt="{{ site.title }}"
-          width="40"
-          height="40"
-          loading="eager"
-          decoding="async"
-          class="nav-logo-img"
-        />
-      </picture>
-      <span class="nav-logo-text">Obsidian Peak <span>Holdings</span></span>
+      <span class="nav-logo-text">Obsidian Peak <span class="nav-logo-sub">Holdings</span></span>
     </a>
 
     <nav aria-label="Main navigation">
@@ -27,7 +16,6 @@
     </nav>
 
     <div class="nav-actions">
-      <!-- Moon icon as default for dark mode; JS will update on load -->
       <button class="btn-theme-toggle" data-theme-toggle aria-label="Switch to light mode">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
       </button>
