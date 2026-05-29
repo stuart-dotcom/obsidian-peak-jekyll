@@ -345,10 +345,11 @@
   0%, 100% { opacity: 1; transform: scale(1); }
   50% { opacity: 0.6; transform: scale(0.8); }
 }
-/*===Hero Banner==== */
+
+/* ===== HERO BANNER ===== */
 .hero-banner {
   width: 100%;
-  background: #fff;             /* ← match this to your image background color */
+  background: #fff;
   border-bottom: 1px solid var(--color-divider);
   overflow: hidden;
   padding: 0;
@@ -365,9 +366,9 @@
   width: 100%;
   height: auto;
   max-height: clamp(160px, 20vw, 280px);
-  object-fit: contain;          /* never crop — full image always visible */
+  object-fit: contain;
   object-position: center center;
-  background: #fff;             /* match your image's white background exactly */
+  background: #fff;
 }
 
 @media (max-width: 600px) {
@@ -375,6 +376,7 @@
     max-height: clamp(120px, 40vw, 200px);
   }
 }
+
 /* ===================================================================
    HERO COPY — text + CTA block below the banner
    =================================================================== */
@@ -523,6 +525,34 @@
   }
 }
 
+/* === SERVICE CARD === */
+/* Electric blue energy field: layered box-shadow + animated border glow */
+@keyframes card-bounce {
+  0%   { transform: translateY(0); }
+  30%  { transform: translateY(-10px); }
+  55%  { transform: translateY(-4px); }
+  75%  { transform: translateY(-8px); }
+  90%  { transform: translateY(-2px); }
+  100% { transform: translateY(-6px); }
+}
+
+@keyframes energy-pulse {
+  0%, 100% {
+    box-shadow:
+      0 0 0 1px #1e90ff,
+      0 0 8px 2px rgba(30, 144, 255, 0.5),
+      0 0 20px 6px rgba(30, 144, 255, 0.25),
+      0 0 40px 10px rgba(30, 144, 255, 0.1);
+  }
+  50% {
+    box-shadow:
+      0 0 0 1px #60b8ff,
+      0 0 14px 4px rgba(96, 184, 255, 0.65),
+      0 0 32px 10px rgba(30, 144, 255, 0.35),
+      0 0 56px 16px rgba(30, 144, 255, 0.15);
+  }
+}
+
 .service-card {
   background: var(--color-surface);
   border: 1px solid oklch(from var(--color-border) l c h / 0.8);
@@ -530,24 +560,42 @@
   padding: var(--space-8);
   position: relative;
   overflow: hidden;
-  transition: box-shadow var(--transition-interactive), transform var(--transition-interactive);
+  transition:
+    box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.25s ease;
 }
 
 .service-card:hover {
-  box-shadow:
-    0 2px 4px oklch(0.1 0.01 220 / 0.06),
-    0 12px 32px oklch(0.1 0.01 220 / 0.12);
-  transform: translateY(-3px);
+  border-color: #1e90ff;
+  animation:
+    card-bounce 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards,
+    energy-pulse 1.8s ease-in-out 0.3s infinite;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .service-card:hover {
+    animation: none;
+    transform: translateY(-4px);
+    box-shadow: 0 0 0 1px #1e90ff, 0 8px 24px rgba(30, 144, 255, 0.3);
+  }
+}
+
+/* === SERVICE ICON — enlarged === */
 .service-icon {
-  width: 40px;
-  height: 40px;
+  width: 56px;
+  height: 56px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: var(--space-5);
   color: var(--color-primary);
+}
+
+/* Scale up SVGs inside service icons to fill the larger container */
+.service-icon svg {
+  width: 40px;
+  height: 40px;
 }
 
 .service-title {
@@ -650,7 +698,11 @@
   line-height: 1.65;
 }
 
-/* === LOGOS / TRUST BAR === */
+/* === LOGOS / TRUST BAR ===
+   Scrollbar fully removed — overflow:hidden on the wrapper clips
+   the infinite scroll track without ever showing a scrollbar.
+   The mask-image fade handles the edge softening.
+*/
 .logos-section {
   padding-block: var(--space-6);
   border-top: 1px solid var(--color-divider);
@@ -671,7 +723,7 @@
 }
 
 .logos-track-wrapper {
-  overflow: hidden;
+  overflow: hidden;  /* ← hard clip, no scrollbar ever */
   mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
   -webkit-mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
 }
@@ -681,6 +733,8 @@
   gap: var(--space-10);
   width: max-content;
   animation: scroll-logos 28s linear infinite;
+  /* Prevent any accidental scrollbar from the track itself */
+  overflow: hidden;
 }
 
 @keyframes scroll-logos {
