@@ -345,14 +345,13 @@
   0%, 100% { opacity: 1; transform: scale(1); }
   50% { opacity: 0.6; transform: scale(0.8); }
 }
-
+/*===Hero Banner==== */
 .hero-banner {
   width: 100%;
   background: var(--color-surface);
   border-bottom: 1px solid var(--color-divider);
   overflow: hidden;
-  /* NO height set — let the image define it naturally */
-  padding: 0;   /* remove any padding that shrinks the image */
+  padding: 0;
   margin: 0;
 }
 
@@ -363,16 +362,16 @@
 
 .hero-banner-img {
   display: block;
-  width: 100%;   /* stretch edge to edge */
-  height: auto;  /* maintain 2:1 ratio naturally */
-  max-height: none;
-  object-fit: unset; /* remove all object-fit interference */
+  width: 100%;
+  height: auto;
+  max-height: clamp(160px, 20vw, 280px);
+  object-fit: cover;
+  object-position: center center;
 }
 
 @media (max-width: 600px) {
   .hero-banner-img {
-    width: 100%;
-    height: auto;
+    max-height: clamp(120px, 40vw, 200px);
   }
 }
 /* ===================================================================
