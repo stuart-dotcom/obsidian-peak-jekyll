@@ -383,7 +383,7 @@
 
 .hero-two-col {
   display: grid;
-  grid-template-columns: 40fr 60fr; /* image gets 60% — kills the whitespace */
+  grid-template-columns: 100fr 100fr; /* image gets 60% — kills the whitespace */
   gap: clamp(var(--space-8), 4vw, var(--space-12));
   align-items: center;
 }
