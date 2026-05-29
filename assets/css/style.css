@@ -384,7 +384,7 @@
   display: grid;
   grid-template-columns: 52fr 48fr;
   gap: clamp(var(--space-8), 4vw, var(--space-12));
-  align-items: center; /* vertically centre both columns */
+  align-items: center;
 }
 
 @media (max-width: 860px) {
@@ -400,26 +400,34 @@
   max-width: 760px;
 }
 
-/* Right column — centres the image horizontally and vertically */
+/*
+  Right column: stretch to fill its full grid cell,
+  then flex-centre the image inside it.
+*/
 .hero-image-col {
+  width: 100%;            /* fill the full grid column */
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 /*
-  Image: NO forced height, NO object-fit:cover.
-  width:100% fills the column width.
-  height:auto preserves the natural aspect ratio — no cropping ever.
-  The flex container above keeps it centred.
+  Image: 75% of the column width, auto height (no crop ever),
+  margin:auto ensures dead-centre within the flex container.
 */
 .hero-feature-img {
   display: block;
-  width: 100%;
-  height: auto;
+  width: 75%;             /* 75% of right column */
+  height: auto;           /* natural aspect ratio — zero cropping */
+  margin: auto;           /* dead-centre horizontally */
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-lg);
-  object-fit: unset; /* ensure no cropping */
+}
+
+@media (max-width: 860px) {
+  .hero-feature-img {
+    width: 85%;           /* slightly larger on stacked mobile layout */
+  }
 }
 
 .hero-eyebrow {
