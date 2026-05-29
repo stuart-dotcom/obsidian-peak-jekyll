@@ -5,11 +5,6 @@ description: "Florida-based, veteran-owned web studio. Custom-coded websites, te
 ---
 
 <!-- ========== HERO BANNER IMAGE ========== -->
-<!--
-  The hero banner is a full-width image strip sitting directly below
-  the nav. The logo is displayed in full — contained, centred, padded.
-  object-fit: contain ensures the entire logo is always visible.
--->
 <div class="hero-banner" role="img" aria-label="Obsidian Peak Holdings logo">
   <picture>
     <source srcset="{{ site.baseurl }}/assets/images/Obsidian_Peak_Logo_.webp" type="image/webp" />
@@ -25,49 +20,70 @@ description: "Florida-based, veteran-owned web studio. Custom-coded websites, te
   </picture>
 </div>
 
-<!-- ========== HERO TEXT + CTA ========== -->
+<!-- ========== HERO TEXT + CTA (two-column) ========== -->
 <section class="hero-copy" aria-labelledby="hero-heading">
   <div class="container">
-    <div class="hero-copy-inner">
+    <div class="hero-two-col">
 
-      <div class="hero-eyebrow">
-        <span class="badge">
-          <span class="badge-dot"></span>
-          Florida-Based &bull; Veteran Owned &bull; U.S. Experts Only
-        </span>
+      <!-- LEFT: copy -->
+      <div class="hero-copy-inner">
+
+        <div class="hero-eyebrow">
+          <span class="badge">
+            <span class="badge-dot"></span>
+            Florida-Based &bull; Veteran Owned &bull; U.S. Experts Only
+          </span>
+        </div>
+
+        <h1 class="hero-heading" id="hero-heading">
+          Websites Built to
+          <span class="accent">Perform. Rank.</span>
+          <span class="accent-gold">Convert.</span>
+        </h1>
+
+        <p class="hero-subtext">
+          Obsidian Peak Holdings engineers every website from the ground up &mdash; no Wix, no Squarespace, no bloated page builders. Precision-built, fast-loading sites that rank and convert. Designed, developed, and managed entirely in-house, in the U.S.
+        </p>
+
+        <div class="hero-actions">
+          <a href="{{ site.baseurl }}/contact/" class="btn btn-hero-cta btn-lg">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            Schedule a Free Consultation
+          </a>
+          <a href="{{ site.baseurl }}/services/" class="btn btn-secondary btn-lg">View Services</a>
+        </div>
+
+        <div class="hero-stats">
+          <div>
+            <div class="hero-stat-number is-text">No Builders</div>
+            <div class="hero-stat-label">Ever. Period.</div>
+          </div>
+          <div>
+            <div class="hero-stat-number is-text">U.S.-Only</div>
+            <div class="hero-stat-label">Zero Outsourcing</div>
+          </div>
+          <div>
+            <div class="hero-stat-number is-text">Done For You</div>
+            <div class="hero-stat-label">Web Hosting &amp; Mastering</div>
+          </div>
+        </div>
+
       </div>
 
-      <h1 class="hero-heading" id="hero-heading">
-        Websites Built to
-        <span class="accent">Perform. Rank.</span>
-        <span class="accent-gold">Convert.</span>
-      </h1>
-
-      <p class="hero-subtext">
-        Obsidian Peak Holdings engineers every website from the ground up &mdash; no Wix, no Squarespace, no bloated page builders. Precision-built, fast-loading sites that rank and convert. Designed, developed, and managed entirely in-house, in the U.S.
-      </p>
-
-      <div class="hero-actions">
-        <a href="{{ site.baseurl }}/contact/" class="btn btn-hero-cta btn-lg">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          Schedule a Free Consultation
-        </a>
-        <a href="{{ site.baseurl }}/services/" class="btn btn-secondary btn-lg">View Services</a>
-      </div>
-
-      <div class="hero-stats">
-        <div>
-          <div class="hero-stat-number is-text">No Builders</div>
-          <div class="hero-stat-label">Ever. Period.</div>
-        </div>
-        <div>
-          <div class="hero-stat-number is-text">U.S.-Only</div>
-          <div class="hero-stat-label">Zero Outsourcing</div>
-        </div>
-        <div>
-          <div class="hero-stat-number is-text">Done For You</div>
-          <div class="hero-stat-label">Web Hosting &amp; Mastering</div>
-        </div>
+      <!-- RIGHT: image -->
+      <div class="hero-image-col">
+        <picture>
+          <source srcset="{{ site.baseurl }}/assets/images/Obsidian-Peak-Holdings-Home-Page-Webdesgin.webp" type="image/webp" />
+          <img
+            src="{{ site.baseurl }}/assets/images/Obsidian-Peak-Holdings-Home-Page-Webdesgin.jpg"
+            alt="Obsidian Peak Holdings — professional web design and technical SEO"
+            width="800"
+            height="600"
+            loading="lazy"
+            decoding="async"
+            class="hero-feature-img"
+          />
+        </picture>
       </div>
 
     </div>
