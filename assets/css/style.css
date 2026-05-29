@@ -385,12 +385,12 @@
   background: var(--color-bg);
 }
 
-/* Two-column grid: text takes 55%, image takes 45% */
+/* Left col slightly wider than right so heading has room; image col gets more weight */
 .hero-two-col {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(var(--space-10), 5vw, var(--space-16));
-  align-items: center;
+  grid-template-columns: 52fr 48fr;
+  gap: clamp(var(--space-8), 4vw, var(--space-12));
+  align-items: stretch; /* both columns same height */
 }
 
 /* Stack to single column on tablet/mobile */
@@ -407,20 +407,33 @@
   max-width: 760px;
 }
 
-/* Right column: image */
+/* Right column: image — fills the full column height and centres the img */
 .hero-image-col {
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 420px; /* ensures column has presence even on shorter viewports */
 }
 
 .hero-feature-img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  min-height: 380px;
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-lg);
   object-fit: cover;
+  object-position: center center;
   display: block;
+}
+
+@media (max-width: 860px) {
+  .hero-image-col {
+    min-height: 260px;
+  }
+  .hero-feature-img {
+    min-height: 240px;
+    height: auto;
+  }
 }
 
 .hero-eyebrow {
