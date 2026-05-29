@@ -377,12 +377,13 @@
    =================================================================== */
 .hero-copy {
   padding-block: clamp(var(--space-12), 5vw, var(--space-20));
+  overflow: hidden; /* contain the image bleed */
   background: var(--color-bg);
 }
 
 .hero-two-col {
   display: grid;
-  grid-template-columns: 52fr 48fr;
+  grid-template-columns: 40fr 60fr; /* image gets 60% — kills the whitespace */
   gap: clamp(var(--space-8), 4vw, var(--space-12));
   align-items: center;
 }
@@ -401,16 +402,15 @@
 }
 
 /*
-  Right column: flex container centring the image.
-  min-height guarantees the column is always substantial
-  even if the image itself hasn't loaded yet.
+  Right column: flush the image to the right edge of the page
+  by bleeding past the container padding with a negative margin.
 */
 .hero-image-col {
   display: flex;
   align-items: center;
-  justify-content: center;
-  min-height: 420px;
+  justify-content: flex-end;
   width: 100%;
+  margin-right: calc(-1 * var(--space-6)); /* bleed past container padding */
 }
 
 /*
@@ -424,21 +424,24 @@
 }
 
 /*
-  Image: width:100% fills the picture/column edge-to-edge.
-  height:auto preserves the natural 16:9 aspect ratio — no crop.
-  No max-width cap — let the grid column constrain it.
+  Image bleeds flush to the right edge — rounded only on the left.
+  width compensates for the negative margin on the parent.
 */
 .hero-feature-img {
   display: block;
-  width: 100%;
+  width: calc(100% + var(--space-6)); /* compensate for the bleed margin */
   height: auto;
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius-xl) 0 0 var(--radius-xl); /* flush right edge */
   box-shadow: var(--shadow-lg);
 }
 
 @media (max-width: 860px) {
   .hero-image-col {
-    min-height: 0;
+    margin-right: 0;
+  }
+  .hero-feature-img {
+    width: 100%;
+    border-radius: var(--radius-xl);
   }
 }
 
