@@ -376,16 +376,16 @@
    HERO COPY — two-column layout: text left, image right
    =================================================================== */
 .hero-copy {
-  padding-block: clamp(var(--space-12), 5vw, var(--space-20));
+  padding-block: clamp(var(--space-12), 2vw, var(--space-20));
   overflow: hidden; /* contain the image bleed */
   background: var(--color-bg);
 }
 
 .hero-two-col {
   display: grid;
-  grid-template-columns: 100fr 100fr; /* image gets 60% — kills the whitespace */
-  gap: clamp(var(--space-8), 4vw, var(--space-12));
-  align-items: center;
+  grid-template-columns: 25fr 25fr; /* image gets 60% — kills the whitespace */
+  gap: clamp(var(--space-8), 2vw, var(--space-12));
+  align-items: right;
 }
 
 @media (max-width: 860px) {
