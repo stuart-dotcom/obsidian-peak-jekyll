@@ -236,6 +236,7 @@ html {
   scroll-behavior: smooth;
   hanging-punctuation: first last;
   scroll-padding-top: var(--space-20);
+  overflow-x: hidden; /* ← prevents horizontal scrollbar from wide animated tracks */
 }
 
 body {
@@ -246,6 +247,7 @@ body {
   color: var(--color-text);
   background-color: var(--color-bg);
   transition: background-color var(--transition-slow), color var(--transition-slow);
+  overflow-x: hidden; /* ← belt-and-suspenders: kills scrollbar at body level too */
 }
 
 img, picture, video, canvas, svg {
