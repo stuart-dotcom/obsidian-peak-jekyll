@@ -373,32 +373,87 @@
 }
 
 /* ===================================================================
-   HERO COPY — two-column layout: text left, image right
+   HERO COPY — image should own the right side with minimal padding
    =================================================================== */
+
 .hero-copy {
-  padding-block: clamp(var(--space-12), 2vw, var(--space-20));
-  overflow: hidden; /* contain the image bleed */
+  padding-block: clamp(var(--space-12), 5vw, var(--space-20));
+  overflow: hidden;
   background: var(--color-bg);
 }
 
-.hero-two-col {
-  display: grid;
-  grid-template-columns: 25fr 25fr; /* image gets 60% — kills the whitespace */
-  gap: clamp(var(--space-8), 2vw, var(--space-12));
-  align-items: right;
+/* Break this section out of the normal container constraint */
+.hero-copy .container {
+  max-width: none;
+  width: 100%;
+  padding-left: var(--space-6);
+  padding-right: 0;
 }
 
-@media (max-width: 860px) {
-  .hero-two-col {
-    grid-template-columns: 1fr;
-  }
-  .hero-image-col {
-    order: -1;
-  }
+/* Give the image much more room */
+.hero-two-col {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.45fr);
+  gap: clamp(var(--space-4), 2vw, var(--space-8));
+  align-items: stretch;
 }
 
 .hero-copy-inner {
-  max-width: 760px;
+  max-width: 640px;
+  padding-right: var(--space-4);
+}
+
+.hero-image-col {
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+  width: 100%;
+  min-width: 0;
+}
+
+.hero-image-col picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+  line-height: 0;
+}
+
+.hero-feature-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: clamp(460px, 46vw, 760px);
+  object-fit: cover;
+  object-position: center;
+  border-radius: var(--radius-xl) 0 0 var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Mobile reset */
+@media (max-width: 860px) {
+  .hero-copy .container {
+    padding-right: var(--space-6);
+  }
+
+  .hero-two-col {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  .hero-copy-inner {
+    max-width: none;
+    padding-right: 0;
+  }
+
+  .hero-image-col {
+    order: -1;
+  }
+
+  .hero-feature-img {
+    min-height: 0;
+    height: auto;
+    border-radius: var(--radius-xl);
+  }
 }
 
 /*
