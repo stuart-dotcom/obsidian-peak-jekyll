@@ -401,32 +401,44 @@
 }
 
 /*
-  Right column: stretch to fill its full grid cell,
-  then flex-centre the image inside it.
+  Right column: flex container centring the image.
+  min-height guarantees the column is always substantial
+  even if the image itself hasn't loaded yet.
 */
 .hero-image-col {
-  width: 100%;            /* fill the full grid column */
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 420px;
+  width: 100%;
 }
 
 /*
-  Image: 75% of the column width, auto height (no crop ever),
-  margin:auto ensures dead-centre within the flex container.
+  picture must be a block that fills the column so the img inside
+  has a real parent width to stretch against.
+*/
+.hero-image-col picture {
+  display: block;
+  width: 100%;
+  line-height: 0;
+}
+
+/*
+  Image: width:100% fills the picture/column edge-to-edge.
+  height:auto preserves the natural 16:9 aspect ratio — no crop.
+  No max-width cap — let the grid column constrain it.
 */
 .hero-feature-img {
   display: block;
-  width: 75%;             /* 75% of right column */
-  height: auto;           /* natural aspect ratio — zero cropping */
-  margin: auto;           /* dead-centre horizontally */
+  width: 100%;
+  height: auto;
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-lg);
 }
 
 @media (max-width: 860px) {
-  .hero-feature-img {
-    width: 85%;           /* slightly larger on stacked mobile layout */
+  .hero-image-col {
+    min-height: 0;
   }
 }
 
