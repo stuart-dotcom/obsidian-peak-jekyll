@@ -348,7 +348,7 @@
 /*===Hero Banner==== */
 .hero-banner {
   width: 100%;
-  background: var(--color-surface);
+  background: #fff;             /* ← match this to your image background color */
   border-bottom: 1px solid var(--color-divider);
   overflow: hidden;
   padding: 0;
@@ -365,8 +365,9 @@
   width: 100%;
   height: auto;
   max-height: clamp(160px, 20vw, 280px);
-  object-fit: cover;
+  object-fit: contain;          /* never crop — full image always visible */
   object-position: center center;
+  background: #fff;             /* match your image's white background exactly */
 }
 
 @media (max-width: 600px) {
