@@ -108,10 +108,6 @@
   border-color: var(--color-primary);
 }
 
-/*
-  Nav CTA: white text on cobalt.
-  White passes WCAG 4.5:1 on both light cobalt (#1a56db) and dark cobalt (#4f8ef7).
-*/
 .nav-cta {
   padding: var(--space-2) var(--space-5);
   background: var(--color-cta);
@@ -181,7 +177,6 @@
   color: var(--color-primary);
 }
 
-/* Mobile CTA */
 .nav-mobile-cta {
   padding: var(--space-3) var(--space-6);
   background: var(--color-cta);
@@ -385,21 +380,19 @@
   background: var(--color-bg);
 }
 
-/* Left col slightly wider than right so heading has room; image col gets more weight */
 .hero-two-col {
   display: grid;
   grid-template-columns: 52fr 48fr;
   gap: clamp(var(--space-8), 4vw, var(--space-12));
-  align-items: stretch; /* both columns same height */
+  align-items: center; /* vertically centre both columns */
 }
 
-/* Stack to single column on tablet/mobile */
 @media (max-width: 860px) {
   .hero-two-col {
     grid-template-columns: 1fr;
   }
   .hero-image-col {
-    order: -1; /* image above text on mobile */
+    order: -1;
   }
 }
 
@@ -407,33 +400,26 @@
   max-width: 760px;
 }
 
-/* Right column: image — fills the full column height and centres the img */
+/* Right column — centres the image horizontally and vertically */
 .hero-image-col {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 420px; /* ensures column has presence even on shorter viewports */
 }
 
+/*
+  Image: NO forced height, NO object-fit:cover.
+  width:100% fills the column width.
+  height:auto preserves the natural aspect ratio — no cropping ever.
+  The flex container above keeps it centred.
+*/
 .hero-feature-img {
+  display: block;
   width: 100%;
-  height: 100%;
-  min-height: 380px;
+  height: auto;
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-lg);
-  object-fit: cover;
-  object-position: center center;
-  display: block;
-}
-
-@media (max-width: 860px) {
-  .hero-image-col {
-    min-height: 260px;
-  }
-  .hero-feature-img {
-    min-height: 240px;
-    height: auto;
-  }
+  object-fit: unset; /* ensure no cropping */
 }
 
 .hero-eyebrow {
@@ -573,7 +559,6 @@
 }
 
 /* === SERVICE CARD === */
-/* Electric blue energy field: layered box-shadow + animated border glow */
 @keyframes card-bounce {
   0%   { transform: translateY(0); }
   30%  { transform: translateY(-10px); }
@@ -628,7 +613,6 @@
   }
 }
 
-/* === SERVICE ICON — enlarged === */
 .service-icon {
   width: 56px;
   height: 56px;
@@ -639,7 +623,6 @@
   color: var(--color-primary);
 }
 
-/* Scale up SVGs inside service icons to fill the larger container */
 .service-icon svg {
   width: 40px;
   height: 40px;
